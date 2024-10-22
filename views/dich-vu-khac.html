@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dịch vụ khác</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            user-select: none; /* Vô hiệu hóa chọn văn bản */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+        }
+
+        .hotline {
+            color: #ff5722;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .hero-section {
+            background-image: url('https://static-images.vnncdn.net/files/publish/2022/9/22/vmhien-tayninh-day2-2022-15-676.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: calc(100vh - 80px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .content {
+            padding: 20px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .faq-item {
+            margin: 20px 0;
+            width: 90%;
+            max-width: 800px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .faq-description {
+            margin: 5px 0;
+            color: #666;
+        }
+
+        .info-company {
+            background-color: #d3d3d3;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .info-company img {
+            width: 80px;
+            height: auto;
+        }
+
+        /* Nút Hotline và Facebook */
+        .fixed-button {
+            position: fixed;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #hotlineBtn {
+            bottom: 80px;
+            background: linear-gradient(135deg, #ff5722, #ff8a3d);
+            color: white;
+        }
+
+        #facebookBtn {
+            bottom: 140px;
+            background: #3b5998;
+            color: white;
+        }
+
+        #hotlineBtn:hover, #facebookBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+        }
+
+        /* Nút Back to Top */
+        #backToTop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+                    alt="Logo" class="logo" style="width: 60px;">
+            </a>
+            <a href="/introduction">Giới thiệu</a>
+            <a href="/buy-car">Dịch vụ xe</a>
+            <a href="/inform-company.html">Tin tức</a>
+            <a href="/recruitment">Đơn Tư Vấn</a>
+            <a href="/dich-vu-khac.html">Các dịch vụ khác</a>
+        </div>
+
+        <div class="nav-right">
+            <div class="hotline">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:02433232323" class="hotline">Hotline: 024 3323 2323</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="hero-section">
+        <h1>Câu hỏi thường gặp</h1>
+    </div>
+
+    <div class="content">
+        <div class="faq-item">
+            <h2 class="faq-title">Câu hỏi thường gặp</h2>
+            <p class="faq-description">
+                Nếu bạn có bất kỳ câu hỏi nào, hãy liên hệ qua số hotline <strong>0983622424</strong> hoặc số <strong>024 3323 2323</strong> để biết thêm thông tin chi tiết. Chúng tôi rất vui vì được giải đáp câu hỏi của bạn.
+            </p>
+        </div>
+    </div>
+
+    <div class="info-company">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+            alt="Logo công ty">
+        <h3>Giới thiệu về công ty</h3>
+        <p>
+            Chúng tôi chuyên cung cấp các dịch vụ bất động sản, Forex và giải mã gen. Với đội ngũ nhân viên chuyên nghiệp, chúng tôi cam kết mang đến dịch vụ tốt nhất cho khách hàng.
+        </p>
+    </div>
+
+    <a href="tel:02433232323" id="hotlineBtn" class="fixed-button">Hotline <i class="fas fa-phone"></i></a>
+    <a href="https://www.facebook.com/" id="facebookBtn" class="fixed-button">Facebook <i class="fab fa-facebook-f"></i></a>
+
+    <button id="backToTop" class="fixed-button">↑</button>
+
+    <script>
+        const backToTopButton = document.getElementById('backToTop');
+        window.onscroll = function () {
+            if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+
+        backToTopButton.onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+    </script>
+</body>
+
+</html>

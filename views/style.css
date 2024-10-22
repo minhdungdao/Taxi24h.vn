@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    overflow-x: hidden; /* Ẩn thanh cuộn ngang */
+    max-width: 1400px; /* Chiều rộng tối đa (điều chỉnh giá trị này theo ý muốn) */
+    margin-left: auto; /* Giữa trang */
+    margin-right: auto; /* Giữa trang */
+    padding: 0 20px; /* Thêm khoảng cách ở hai bên trái và phải */
+    box-sizing: border-box; /* Đảm bảo padding không làm tăng kích thước */
+}
+
+.content {
+    max-width: 1200px; /* Đảm bảo phần nội dung cũng không quá rộng */
+    margin: 0 auto; /* Giữa trang */
+    padding: 20px; /* Thêm padding cho nội dung */
+    background-color: white; /* Nền trắng cho nội dung */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Đổ bóng cho nội dung */
+    border-radius: 8px; /* Bo góc cho nội dung */
+}

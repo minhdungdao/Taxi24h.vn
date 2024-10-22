@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Ký</title>
+    <style>
+        /* Styling cho toàn bộ trang */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* Khung chứa form đăng ký */
+        .register-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 500px; /* Kích thước lớn hơn */
+            text-align: center;
+        }
+
+        /* Tiêu đề của form */
+        .register-container h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: #333;
+        }
+
+        /* Các ô nhập liệu */
+        .register-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px; /* Khoảng cách giữa các ô nhập liệu */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        /* Nút đăng ký */
+        .register-container button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 18px;
+            cursor: pointer;
+            margin-bottom: 20px; /* Khoảng cách giữa nút đăng ký và các nút mạng xã hội */
+        }
+
+        .register-container button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Nút mạng xã hội */
+        .social-buttons {
+            display: flex;
+            flex-direction: column; /* Sắp xếp theo chiều dọc */
+            margin-top: 20px;
+            gap: 10px; /* Khoảng cách giữa các nút */
+        }
+
+        .social-buttons a {
+            display: flex;
+            align-items: center; /* Căn giữa icon và chữ */
+            justify-content: center;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .social-buttons a svg {
+            margin-right: 10px; /* Khoảng cách giữa icon và chữ */
+            width: 20px;
+            height: 20px;
+        }
+
+        .google-btn {
+            background-color: #db4437;
+        }
+
+        .facebook-btn {
+            background-color: #3b5998;
+        }
+
+        .zalo-btn {
+            background-color: #0084ff;
+        }
+
+        /* Hover effects */
+        .social-buttons a:hover {
+            opacity: 0.9;
+        }
+
+        /* Link đến trang đăng nhập */
+        .login-link {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .login-link a {
+            text-decoration: none;
+            color: #007bff; /* Màu chữ của liên kết */
+        }
+
+        .login-link a:hover {
+            text-decoration: underline; /* Gạch chân khi hover */
+        }
+
+        /* Link đến trang chủ */
+        .home-link {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .home-link a {
+            text-decoration: none;
+            color: #007bff; /* Màu chữ của liên kết */
+        }
+
+        .home-link a:hover {
+            text-decoration: underline; /* Gạch chân khi hover */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="register-container">
+        <h1>Đăng Ký</h1>
+        <form method="POST" action="/register">
+            <input type="text" id="fullName" name="fullName" placeholder="Họ và tên" required><br>
+            <input type="text" id="phoneNumber" name="phoneNumber" placeholder="Số điện thoại" required><br>
+            <input type="email" id="email" name="email" placeholder="Email" required><br>
+            <input type="password" id="password" name="password" placeholder="Mật khẩu" required><br>
+            <button type="submit">Đăng ký</button>
+        </form>
+
+        <div class="login-link">
+            <p>Bạn đã có tài khoản? <a href="/login">Đăng nhập tại đây</a></p>
+        </div>
+
+        <div class="home-link">
+            <p><a href="/">Quay lại trang chủ</a></p>
+        </div>
+
+        <div class="social-buttons">
+            <!-- Nút đăng ký với Google -->
+            <a href="/auth/google" class="google-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-envelope" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z"/>
+                </svg>
+                Đăng ký với Google
+            </a>
+            
+            <!-- Nút đăng ký với Facebook -->
+            <a href="/auth/facebook" class="facebook-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                  <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+                </svg>
+                Đăng ký với Facebook
+            </a>
+            
+            <!-- Nút đăng ký với Zalo -->
+            <a href="/auth/zalo" class="zalo-btn">
+                <!-- Sử dụng biểu tượng WeChat mới -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-wechat" viewBox="0 0 16 16">
+                  <path d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.32.32 0 0 0-.12.366l.218.81a.6.6 0 0 1 .029.117.166.166 0 0 1-.162.162.2.2 0 0 1-.092-.03l-1.057-.61a.5.5 0 0 0-.256-.074.5.5 0 0 0-.142.021 5.7 5.7 0 0 1-1.576.22M9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.6.6 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.63.63 0 0 0 .098.356"/>
+                  <path d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.5.5 0 0 0-.032.14.19.19 0 0 0 .193.193q.06 0 .111-.029l1.268-.733a.6.6 0 0 1 .308-.088q.088 0 .171.025a6.8 6.8 0 0 0 1.625.26 4.5 4.5 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02l.15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826m4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0m3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0"/>
+                </svg>
+                Đăng ký với Zalo
+            </a>
+        </div>
+    </div>
+<script>
+    document.addEventListener('contextmenu', function(e) {
+    e.preventDefault(); // Ngăn chặn menu chuột phải
+});
+
+</script>
+</body>
+</html>

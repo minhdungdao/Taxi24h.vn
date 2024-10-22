@@ -1,0 +1,4456 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mua xe - HMP TAXI 24h</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <link rel="icon"
+        href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+
+
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+            user-select: none;
+            /* Vô hiệu hóa chọn văn bản */
+
+            /* Ẩn thanh cuộn ngang */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .separator {
+            height: 20px;
+            width: 1px;
+            background-color: #ddd;
+            margin: 0 8px;
+        }
+
+        .hotline {
+            color: #ff5722;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .hotline:hover {
+            text-decoration: underline;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .account-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .account-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .logo {
+            width: 60px;
+            margin-right: 15px;
+        }
+
+        .car-list {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .car-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            margin: 10px;
+            width: 300px;
+            background-color: white;
+        }
+
+        .car-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .car-item h3 {
+            margin: 10px 0;
+        }
+
+        /* Đặt nền cho toàn bộ trang Mua Xe */
+        .buy-car-page {
+            background-image: url('https://scontent.fhan8-1.fna.fbcdn.net/v/t39.30808-6/450107593_879987614163686_6382519255631342643_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=127cfc&_nc_ohc=aWLkxAEupfkQ7kNvgHVKu54&_nc_zt=23&_nc_ht=scontent.fhan8-1.fna&_nc_gid=ANLxE_NqyQ6GT7Tn3aecE26&oh=00_AYCt8r7x4omTLfLDSiYNv3kMbn1SO_Kgrzk-SSSTzw9ujQ&oe=671792E6');
+            background-size: 100%;
+            /* Tăng kích thước ảnh nền */
+            background-repeat: no-repeat;
+            background-position: center;
+            /* Căn giữa ảnh nền */
+            height: 80vh;
+            /* Chiều cao 100% màn hình */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Căn giữa theo chiều dọc */
+            align-items: center;
+            /* Căn giữa theo chiều ngang */
+            text-align: center;
+            color: white;
+            /* Màu chữ trắng */
+        }
+
+        /* Định dạng tiêu đề */
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            /* Hiệu ứng đổ bóng chữ */
+            margin-bottom: 20px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            /* Thêm position relative để định vị menu con */
+        }
+
+        .nav-left .dropdown {
+            position: relative;
+            /* Đặt vị trí tương đối cho dropdown */
+        }
+
+        .nav-left .dropdown-content {
+            display: none;
+            /* Ẩn menu con mặc định */
+            position: absolute;
+            /* Đặt vị trí tuyệt đối */
+            background-color: #f9f9f9;
+            /* Màu nền của menu con */
+            min-width: 160px;
+            /* Độ rộng tối thiểu */
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            /* Đặt z-index để nó xuất hiện trên các phần tử khác */
+            top: 100%;
+            /* Đưa menu con xuống dưới mục "Mua xe" */
+            left: 0;
+            /* Căn lề trái */
+        }
+
+        .nav-left .dropdown.active .dropdown-content {
+            display: block;
+            /* Hiện menu con khi có class active */
+        }
+
+        .nav-left .dropdown-content a {
+            color: black;
+            /* Màu chữ */
+            padding: 12px 16px;
+            /* Padding cho các mục */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            display: block;
+            /* Hiển thị dưới dạng block */
+        }
+
+        .nav-left .dropdown-content a:hover {
+            background-color: #f1f1f1;
+            /* Hiệu ứng hover */
+        }
+
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .product-box {
+            width: 250px;
+            /* Chiều rộng khung sản phẩm */
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        h3 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .details-button {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #ff5722;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+
+        .details-button:hover {
+            background-color: #e64a19;
+        }
+
+        .color-options {
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            display: block;
+            font-size: 1.5em;
+            /* Kích thước chữ */
+            margin-block-start: 1em;
+            /* Khoảng cách phía trên */
+            margin-block-end: 1em;
+            /* Khoảng cách phía dưới */
+            margin-inline-start: 0;
+            /* Khoảng cách bên trái */
+            margin-inline-end: 0;
+            /* Khoảng cách bên phải */
+            font-weight: bold;
+            /* Đậm chữ */
+            unicode-bidi: isolate;
+            /* Xử lý văn bản */
+            color: #333;
+            /* Màu chữ */
+            text-align: center;
+            /* Căn giữa tiêu đề */
+            border-bottom: 2px solid #ddd;
+            /* Thêm đường viền dưới tiêu đề */
+            padding-bottom: 10px;
+            /* Khoảng cách giữa chữ và viền */
+            padding-top: 10px;
+            /* Khoảng cách giữa viền trên và tiêu đề */
+            margin: 20px 0;
+            /* Khoảng cách bên ngoài (trên và dưới) */
+        }
+
+
+        /*toyota*/
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .product-box {
+            border: 1px solid #ddd;
+            /* Viền của hộp sản phẩm */
+            border-radius: 8px;
+            /* Bo góc hộp sản phẩm */
+            padding: 10px;
+            /* Padding bên trong */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho hộp sản phẩm */
+            width: 300px;
+            /* Chiều rộng cố định cho mỗi sản phẩm */
+            text-align: center;
+            /* Căn giữa nội dung */
+            box-sizing: border-box;
+            /* Đảm bảo padding và border không ảnh hưởng đến chiều rộng */
+        }
+
+        .product-img {
+            width: 100%;
+            /* Chiều rộng ảnh bằng 100% khung sản phẩm */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        }
+
+        .details-button {
+            background-color: #007bff;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Padding cho nút */
+            border: none;
+            /* Bỏ viền cho nút */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột */
+            text-decoration: none;
+            /* Bỏ gạch chân cho liên kết */
+        }
+
+        .details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi di chuột qua nút */
+        }
+
+        .color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các nút màu */
+            gap: 10px;
+            /* Khoảng cách giữa các nút màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+        }
+
+        .color-btn {
+            width: 30px;
+            /* Đường kính của nút màu */
+            height: 30px;
+            /* Đường kính của nút màu */
+            border: none;
+            /* Bỏ viền cho nút màu */
+            border-radius: 50%;
+            /* Tạo hình tròn cho nút màu */
+            cursor: pointer;
+            /* Con trỏ chuột khi di chuột qua nút màu */
+        }
+
+        .color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng khi di chuột qua nút màu */
+        }
+
+        .details {
+            display: none;
+            /* Ẩn phần chi tiết ban đầu */
+            margin: 20px;
+            /* Lề cho phần chi tiết */
+            border: 1px solid #ddd;
+            /* Viền cho phần chi tiết */
+            border-radius: 8px;
+            /* Bo tròn các góc */
+            padding: 20px;
+            /* Padding cho phần chi tiết */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Hiệu ứng đổ bóng cho phần chi tiết */
+        }
+
+        .modal {
+            display: none;
+            /* Ẩn modal theo mặc định */
+            position: fixed;
+            /* Giữ modal ở vị trí cố định */
+            z-index: 1;
+            /* Đặt z-index cao để modal hiển thị trên cùng */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Đặt chiều rộng đầy đủ */
+            height: 100%;
+            /* Đặt chiều cao đầy đủ */
+            overflow: auto;
+            /* Thêm thanh cuộn nếu cần */
+            background-color: rgb(0, 0, 0);
+            /* Màu nền đen */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Màu nền với độ trong suốt */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* Đặt vị trí ở giữa màn hình */
+            padding: 20px;
+            /* Padding cho nội dung modal */
+            border: 1px solid #888;
+            /* Viền cho modal */
+            width: 80%;
+            /* Đặt chiều rộng của modal */
+            border-radius: 5px;
+            /* Bo góc cho modal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng cho modal */
+        }
+
+        .close {
+            color: #aaa;
+            /* Màu cho nút đóng */
+            float: right;
+            /* Đặt nút đóng ở bên phải */
+            font-size: 28px;
+            /* Kích thước chữ */
+            font-weight: bold;
+            /* Đậm chữ */
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            /* Màu khi hover hoặc focus */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi hover */
+        }
+
+        /*nissan*/
+        /* Nissan */
+        .nissan-product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            /* Giảm khoảng cách giữa các sản phẩm hơn nữa */
+            justify-content: space-between;
+            /* Căn đều các sản phẩm */
+        }
+
+        .nissan-product-box {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 8px;
+            /* Giảm padding để tạo không gian gần hơn */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            /* Khoảng cách dưới mỗi sản phẩm */
+        }
+
+        .nissan-product-img {
+            width: 100%;
+            height: auto;
+        }
+
+        .nissan-details-button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 12px;
+            /* Giảm padding để nút nhỏ hơn */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nissan-details-button:hover {
+            background-color: #0056b3;
+        }
+
+        .nissan-color-options {
+            display: flex;
+            gap: 8px;
+            /* Giảm khoảng cách giữa các nút màu */
+            justify-content: center;
+        }
+
+        .nissan-color-btn {
+            width: 28px;
+            /* Giảm kích thước nút màu */
+            height: 28px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .nissan-color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nissan-details {
+            display: none;
+            margin: 15px;
+            /* Giảm margin của phần chi tiết */
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            /* Giảm padding phần chi tiết */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mitsubishi */
+        .mitsubishi-product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .mitsubishi-product-box {
+            border: 1px solid #ddd;
+            /* Viền của hộp sản phẩm */
+            border-radius: 8px;
+            /* Bo góc hộp sản phẩm */
+            padding: 10px;
+            /* Padding bên trong */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho hộp sản phẩm */
+            width: 300px;
+            /* Chiều rộng cố định cho mỗi sản phẩm */
+            text-align: center;
+            /* Căn giữa nội dung */
+            box-sizing: border-box;
+            /* Đảm bảo padding và border không ảnh hưởng đến chiều rộng */
+            margin: 10px;
+            /* Thêm margin để tách biệt các sản phẩm */
+        }
+
+        .mitsubishi-product-img {
+            width: 100%;
+            /* Chiều rộng ảnh bằng 100% khung sản phẩm */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        }
+
+        .mitsubishi-details-button {
+            background-color: #007bff;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Padding cho nút */
+            border: none;
+            /* Bỏ viền cho nút */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột */
+            text-decoration: none;
+            /* Bỏ gạch chân cho liên kết */
+        }
+
+        .mitsubishi-details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi di chuột qua nút */
+        }
+
+        .mitsubishi-color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các nút màu */
+            gap: 10px;
+            /* Khoảng cách giữa các nút màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+            margin-top: 15px;
+            /* Thêm lề phía trên */
+        }
+
+        .mitsubishi-color-btn {
+            width: 30px;
+            /* Đường kính của nút màu */
+            height: 30px;
+            /* Đường kính của nút màu */
+            border: none;
+            /* Bỏ viền cho nút màu */
+            border-radius: 50%;
+            /* Tạo hình tròn cho nút màu */
+            cursor: pointer;
+            /* Con trỏ chuột khi di chuột qua nút màu */
+        }
+
+        .mitsubishi-color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng khi di chuột qua nút màu */
+        }
+
+        .mitsubishi-details {
+            display: none;
+            /* Ẩn phần chi tiết ban đầu */
+            margin: 20px;
+            /* Lề cho phần chi tiết */
+            border: 1px solid #ddd;
+            /* Viền cho phần chi tiết */
+            border-radius: 8px;
+            /* Bo tròn các góc */
+            padding: 20px;
+            /* Padding cho phần chi tiết */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Hiệu ứng đổ bóng cho phần chi tiết */
+        }
+
+        /* Modal cho sản phẩm Mitsubishi */
+        .mitsubishi-modal {
+            display: none;
+            /* Ẩn modal theo mặc định */
+            position: fixed;
+            /* Giữ modal ở vị trí cố định */
+            z-index: 1;
+            /* Đặt z-index cao để modal hiển thị trên cùng */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Đặt chiều rộng đầy đủ */
+            height: 100%;
+            /* Đặt chiều cao đầy đủ */
+            overflow: auto;
+            /* Thêm thanh cuộn nếu cần */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Màu nền với độ trong suốt */
+        }
+
+        .mitsubishi-modal-content {
+            background-color: #fefefe;
+            /* Màu nền cho modal */
+            margin: 15% auto;
+            /* Đặt vị trí ở giữa màn hình */
+            padding: 20px;
+            /* Padding cho nội dung modal */
+            border: 1px solid #888;
+            /* Viền cho modal */
+            width: 80%;
+            /* Đặt chiều rộng của modal */
+            border-radius: 5px;
+            /* Bo góc cho modal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng cho modal */
+        }
+
+        .mitsubishi-close {
+            color: #aaa;
+            /* Màu cho nút đóng */
+            float: right;
+            /* Đặt nút đóng ở bên phải */
+            font-size: 28px;
+            /* Kích thước chữ */
+            font-weight: bold;
+            /* Đậm chữ */
+        }
+
+        .mitsubishi-close:hover,
+        .mitsubishi-close:focus {
+            color: black;
+            /* Màu khi hover hoặc focus */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi hover */
+        }
+
+        /* Kia */
+        .kia-product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .kia-product-box {
+            border: 1px solid #ddd;
+            /* Viền của hộp sản phẩm */
+            border-radius: 8px;
+            /* Bo góc hộp sản phẩm */
+            padding: 10px;
+            /* Padding bên trong */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho hộp sản phẩm */
+            width: 300px;
+            /* Chiều rộng cố định cho mỗi sản phẩm */
+            text-align: center;
+            /* Căn giữa nội dung */
+            box-sizing: border-box;
+            /* Đảm bảo padding và border không ảnh hưởng đến chiều rộng */
+            margin: 10px;
+            /* Thêm margin để tách biệt các sản phẩm */
+        }
+
+        .kia-product-img {
+            width: 100%;
+            /* Chiều rộng ảnh bằng 100% khung sản phẩm */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        }
+
+        .kia-details-button {
+            background-color: #007bff;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Padding cho nút */
+            border: none;
+            /* Bỏ viền cho nút */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột */
+            text-decoration: none;
+            /* Bỏ gạch chân cho liên kết */
+        }
+
+        .kia-details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi di chuột qua nút */
+        }
+
+        .kia-color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các nút màu */
+            gap: 10px;
+            /* Khoảng cách giữa các nút màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+            margin-top: 15px;
+            /* Thêm lề phía trên */
+        }
+
+        .kia-color-btn {
+            width: 30px;
+            /* Đường kính của nút màu */
+            height: 30px;
+            /* Đường kính của nút màu */
+            border: none;
+            /* Bỏ viền cho nút màu */
+            border-radius: 50%;
+            /* Tạo hình tròn cho nút màu */
+            cursor: pointer;
+            /* Con trỏ chuột khi di chuột qua nút màu */
+        }
+
+        .kia-color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng khi di chuột qua nút màu */
+        }
+
+        .kia-details {
+            display: none;
+            /* Ẩn phần chi tiết ban đầu */
+            margin: 20px;
+            /* Lề cho phần chi tiết */
+            border: 1px solid #ddd;
+            /* Viền cho phần chi tiết */
+            border-radius: 8px;
+            /* Bo tròn các góc */
+            padding: 20px;
+            /* Padding cho phần chi tiết */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Hiệu ứng đổ bóng cho phần chi tiết */
+        }
+
+        /* Modal cho sản phẩm Kia */
+        .kia-modal {
+            display: none;
+            /* Ẩn modal theo mặc định */
+            position: fixed;
+            /* Giữ modal ở vị trí cố định */
+            z-index: 1;
+            /* Đặt z-index cao để modal hiển thị trên cùng */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Đặt chiều rộng đầy đủ */
+            height: 100%;
+            /* Đặt chiều cao đầy đủ */
+            overflow: auto;
+            /* Thêm thanh cuộn nếu cần */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Màu nền với độ trong suốt */
+        }
+
+        .kia-modal-content {
+            background-color: #fefefe;
+            /* Màu nền cho modal */
+            margin: 15% auto;
+            /* Đặt vị trí ở giữa màn hình */
+            padding: 20px;
+            /* Padding cho nội dung modal */
+            border: 1px solid #888;
+            /* Viền cho modal */
+            width: 80%;
+            /* Đặt chiều rộng của modal */
+            border-radius: 5px;
+            /* Bo góc cho modal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng cho modal */
+        }
+
+        .kia-close {
+            color: #aaa;
+            /* Màu cho nút đóng */
+            float: right;
+            /* Đặt nút đóng ở bên phải */
+            font-size: 28px;
+            /* Kích thước chữ */
+            font-weight: bold;
+            /* Đậm chữ */
+        }
+
+        .kia-close:hover,
+        .kia-close:focus {
+            color: black;
+            /* Màu khi hover hoặc focus */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi hover */
+        }
+
+        /* Ford */
+        .ford-product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .ford-product-box {
+            border: 1px solid #ddd;
+            /* Viền của hộp sản phẩm */
+            border-radius: 8px;
+            /* Bo góc hộp sản phẩm */
+            padding: 10px;
+            /* Padding bên trong */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho hộp sản phẩm */
+            width: 300px;
+            /* Chiều rộng cố định cho mỗi sản phẩm */
+            text-align: center;
+            /* Căn giữa nội dung */
+            box-sizing: border-box;
+            /* Đảm bảo padding và border không ảnh hưởng đến chiều rộng */
+            margin: 10px;
+            /* Thêm margin để tách biệt các sản phẩm */
+        }
+
+        .ford-product-img {
+            width: 100%;
+            /* Chiều rộng ảnh bằng 100% khung sản phẩm */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        }
+
+        .ford-details-button {
+            background-color: #007bff;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Padding cho nút */
+            border: none;
+            /* Bỏ viền cho nút */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột */
+            text-decoration: none;
+            /* Bỏ gạch chân cho liên kết */
+        }
+
+        .ford-details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi di chuột qua nút */
+        }
+
+        .ford-color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các nút màu */
+            gap: 10px;
+            /* Khoảng cách giữa các nút màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+            margin-top: 15px;
+            /* Thêm lề phía trên */
+        }
+
+        .ford-color-btn {
+            width: 30px;
+            /* Đường kính của nút màu */
+            height: 30px;
+            /* Đường kính của nút màu */
+            border: none;
+            /* Bỏ viền cho nút màu */
+            border-radius: 50%;
+            /* Tạo hình tròn cho nút màu */
+            cursor: pointer;
+            /* Con trỏ chuột khi di chuột qua nút màu */
+        }
+
+        .ford-color-btn:hover {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng khi di chuột qua nút màu */
+        }
+
+        .ford-details {
+            display: none;
+            /* Ẩn phần chi tiết ban đầu */
+            margin: 20px;
+            /* Lề cho phần chi tiết */
+            border: 1px solid #ddd;
+            /* Viền cho phần chi tiết */
+            border-radius: 8px;
+            /* Bo tròn các góc */
+            padding: 20px;
+            /* Padding cho phần chi tiết */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Hiệu ứng đổ bóng cho phần chi tiết */
+        }
+
+        /* Modal cho sản phẩm Ford */
+        .ford-modal {
+            display: none;
+            /* Ẩn modal theo mặc định */
+            position: fixed;
+            /* Giữ modal ở vị trí cố định */
+            z-index: 1;
+            /* Đặt z-index cao để modal hiển thị trên cùng */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Đặt chiều rộng đầy đủ */
+            height: 100%;
+            /* Đặt chiều cao đầy đủ */
+            overflow: auto;
+            /* Thêm thanh cuộn nếu cần */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Màu nền với độ trong suốt */
+        }
+
+        .ford-modal-content {
+            background-color: #fefefe;
+            /* Màu nền cho modal */
+            margin: 15% auto;
+            /* Đặt vị trí ở giữa màn hình */
+            padding: 20px;
+            /* Padding cho nội dung modal */
+            border: 1px solid #888;
+            /* Viền cho modal */
+            width: 80%;
+            /* Đặt chiều rộng của modal */
+            border-radius: 5px;
+            /* Bo góc cho modal */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Hiệu ứng đổ bóng cho modal */
+        }
+
+        .ford-close {
+            color: #aaa;
+            /* Màu cho nút đóng */
+            float: right;
+            /* Đặt nút đóng ở bên phải */
+            font-size: 28px;
+            /* Kích thước chữ */
+            font-weight: bold;
+            /* Đậm chữ */
+        }
+
+        .ford-close:hover,
+        .ford-close:focus {
+            color: black;
+            /* Màu khi hover hoặc focus */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi hover */
+        }
+
+
+        /* Hyundai */
+        .hyundai-product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            /* Khoảng cách giữa các sản phẩm */
+        }
+
+        .hyundai-product-box {
+            border: 1px solid #ddd;
+            /* Viền của hộp sản phẩm */
+            border-radius: 8px;
+            /* Bo góc hộp sản phẩm */
+            padding: 10px;
+            /* Padding bên trong */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho hộp sản phẩm */
+            width: 300px;
+            /* Chiều rộng cố định cho mỗi sản phẩm */
+            text-align: center;
+            /* Căn giữa nội dung */
+            box-sizing: border-box;
+            /* Đảm bảo padding và border không ảnh hưởng đến chiều rộng */
+            margin: 10px;
+            /* Thêm margin để tách biệt các sản phẩm */
+        }
+
+        .hyundai-product-img {
+            width: 100%;
+            /* Chiều rộng ảnh bằng 100% khung sản phẩm */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao để giữ tỉ lệ */
+        }
+
+        .hyundai-details-button {
+            background-color: #007bff;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Padding cho nút */
+            border: none;
+            /* Bỏ viền cho nút */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột */
+            text-decoration: none;
+            /* Bỏ gạch chân cho liên kết */
+        }
+
+        .hyundai-details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi di chuột qua nút */
+        }
+
+        .hyundai-color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các nút màu */
+            gap: 10px;
+            /* Khoảng cách giữa các nút màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+        }
+
+        .hyundai-color-btn {
+            width: 30px;
+            height: 30px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            /* Hiển thị con trỏ khi di chuột qua nút màu */
+            outline: none;
+        }
+
+        /* Ford */
+        .ford-product-box {
+            border: 1px solid #ccc;
+            /* Viền sản phẩm */
+            border-radius: 10px;
+            /* Bo góc */
+            padding: 20px;
+            /* Khoảng cách bên trong */
+            margin: 15px;
+            /* Khoảng cách giữa các khung sản phẩm */
+            display: inline-block;
+            /* Để các sản phẩm hiển thị cạnh nhau */
+            width: 300px;
+            /* Chiều rộng của khung sản phẩm */
+            vertical-align: top;
+            /* Căn chỉnh các khung sản phẩm theo chiều dọc */
+            text-align: center;
+            /* Căn giữa nội dung */
+            background-color: #f9f9f9;
+            /* Màu nền */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng */
+        }
+
+        .product-img {
+            width: 100%;
+            /* Đặt chiều rộng hình ảnh bằng 100% của khung */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao */
+            border-radius: 10px;
+            /* Bo góc cho hình ảnh */
+        }
+
+        .details-button {
+            background-color: #007BFF;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Khoảng cách bên trong nút */
+            border: none;
+            /* Bỏ viền */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Con trỏ khi hover */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+        }
+
+        .details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi hover */
+        }
+
+        .color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+            margin-top: 10px;
+            /* Khoảng cách trên */
+        }
+
+        .color-btn {
+            width: 30px;
+            /* Chiều rộng của nút màu */
+            height: 30px;
+            /* Chiều cao của nút màu */
+            border: none;
+            /* Bỏ viền */
+            border-radius: 50%;
+            /* Bo góc để tạo hình tròn */
+            margin: 0 5px;
+            /* Khoảng cách giữa các nút màu */
+            cursor: pointer;
+            /* Con trỏ khi hover */
+        }
+
+        /* vinfast */
+        /* VinFast */
+        .vinfast-product-box {
+            border: 1px solid #ccc;
+            /* Viền sản phẩm */
+            border-radius: 10px;
+            /* Bo góc */
+            padding: 20px;
+            /* Khoảng cách bên trong */
+            margin: 15px;
+            /* Khoảng cách giữa các khung sản phẩm */
+            display: inline-block;
+            /* Để các sản phẩm hiển thị cạnh nhau */
+            width: 300px;
+            /* Chiều rộng của khung sản phẩm */
+            vertical-align: top;
+            /* Căn chỉnh các khung sản phẩm theo chiều dọc */
+            text-align: center;
+            /* Căn giữa nội dung */
+            background-color: #f9f9f9;
+            /* Màu nền */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng */
+        }
+
+        .vinfast-product-img {
+            width: 100%;
+            /* Đặt chiều rộng hình ảnh bằng 100% của khung */
+            height: auto;
+            /* Tự động điều chỉnh chiều cao */
+            border-radius: 10px;
+            /* Bo góc cho hình ảnh */
+        }
+
+        .vinfast-details-button {
+            background-color: #007BFF;
+            /* Màu nền của nút */
+            color: white;
+            /* Màu chữ */
+            padding: 10px 15px;
+            /* Khoảng cách bên trong nút */
+            border: none;
+            /* Bỏ viền */
+            border-radius: 5px;
+            /* Bo góc cho nút */
+            cursor: pointer;
+            /* Con trỏ khi hover */
+            text-decoration: none;
+            /* Bỏ gạch chân */
+        }
+
+        .vinfast-details-button:hover {
+            background-color: #0056b3;
+            /* Màu nền khi hover */
+        }
+
+        .vinfast-color-options {
+            display: flex;
+            /* Sử dụng flexbox để căn chỉnh các màu */
+            justify-content: center;
+            /* Căn giữa các nút màu */
+            margin-top: 10px;
+            /* Khoảng cách trên */
+        }
+
+        .vinfast-color-btn {
+            width: 30px;
+            /* Chiều rộng của nút màu */
+            height: 30px;
+            /* Chiều cao của nút màu */
+            border: none;
+            /* Bỏ viền */
+            border-radius: 50%;
+            /* Bo góc để tạo hình tròn */
+            margin: 0 5px;
+            /* Khoảng cách giữa các nút màu */
+            cursor: pointer;
+            /* Con trỏ khi hover */
+        }
+
+        /* CSS cho nút Hotline */
+        #hotlineBtn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff5722, #ff8a3d);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #hotlineBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+
+        /* Hiệu ứng ánh sáng phát sáng */
+        #hotlineBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            /* Ánh sáng mềm mại */
+            filter: blur(15px);
+            opacity: 0;
+            /* Ẩn ban đầu */
+            transition: opacity 0.3s;
+        }
+
+        #hotlineBtn:hover:before {
+            opacity: 1;
+            /* Hiện lên khi hover */
+        }
+
+        /* CSS cho nút Facebook */
+        #facebookBtn {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: #3b5998;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #facebookBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+                    alt="Logo" class="logo">
+            </a>
+            <div class="dropdown">
+                <a href="/introduction" class="introduction">Giới thiệu</a>
+
+                <a href="#" class="buy-car">Dịch vụ xe</a>
+                <div class="dropdown-content">
+                    <a href="#toyota">Toyota</a>
+                    <a href="#honda">Honda</a>
+                    <a href="#nissan">Nissan</a>
+                    <a href="#mitsubishi">Mitsubishi</a>
+                    <a href="#kia">Kia</a>
+                    <a href="#mazda">Mazda</a>
+                    <a href="#hyundai">Hyundai</a>
+                    <a href="#ford">Ford</a>
+                    <a href="#vinfast">VinFast</a>
+                </div>
+            </div>
+
+            <a href="/inform-company.html" class="inform-company">Tin tức</a>
+            <a href="/recruitment" class="recruitment">Đơn Tư Vấn</a> <!-- Liên kết Tuyển dụng -->
+
+            <a href="/dich-vu-khac.html" class="service">Các dịch vụ khác</a>
+
+
+        </div>
+
+    </nav>
+
+    <!-- Nội dung trang Mua xe -->
+    <div class="buy-car-page">
+        <h1 class="title">Mua Xe</h1>
+        <div class="car-list" id="car-list"></div>
+    </div>
+    <!-- Tiêu đề cho từng hãng xe -->
+    <h2 id="toyota">Xe Toyota</h2>
+    <div class="car-product">
+        <div class="product-container">
+
+            <!-- Toyota Vios -->
+            <div class="product-box">
+                <img id="toyota-vios-img"
+                    src="https://cms-i.autodaily.vn/du-lieu/2022/08/09/Vios%202023/vios-2023-x36.jpeg" alt="Toyota Vios"
+                    class="product-img">
+                <h3>Toyota Vios</h3>
+                <p>Giá: 561.000.000 - 592.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('toyota-vios-details')" class="details-button">Xem
+                    chi tiết</a>
+
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('toyota-vios-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('toyota-vios-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('toyota-vios-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('toyota-vios-img', 'gray')"></button> <!-- Màu xanh -->
+                        <button class="color-btn" style="background-color: #0000ff;"
+                            onclick="changeColor('toyota-vios-img', 'blue')"></button> <!-- Màu xanh dương -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toyota Yaris -->
+            <div class="product-box">
+                <img id="toyota-yaris-img"
+                    src="https://media.vov.vn/sites/default/files/styles/large/public/2023-03/z4169868589649_d95c16250aa8354cf7880a08ee6bf9b4.jpg"
+                    alt="Toyota Yaris" class="product-img">
+                <h3>Toyota Yaris</h3>
+                <p>Giá: 684.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('toyota-yaris-details')" class="details-button">Xem
+                    chi tiết</a>
+
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('toyota-yaris-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('toyota-yaris-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('toyota-yaris-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('toyota-yaris-img', 'gray')"></button> <!-- Màu xanh -->
+                        <button class="color-btn" style="background-color: #0000ff;"
+                            onclick="changeColor('toyota-yaris-img', 'blue')"></button> <!-- Màu xanh dương -->
+                        <button class="color-btn" style="background-color: yellow;"
+                            onclick="changeColor('toyota-yaris-img', 'yellow')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toyota Avanza Premio -->
+            <div class="product-box">
+                <img id="toyota-avanza-img"
+                    src="https://giaxeotolanbanh.com/wp-content/uploads/2022/05/ngoai-that-avanza-premio-8-a879-1.jpg"
+                    alt="Toyota Avanza Premio" class="product-img">
+                <h3>Toyota Avanza Premio</h3>
+                <p>Giá: 558.000.000 - 598.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('toyota-avanza-details')" class="details-button">Xem
+                    chi tiết</a>
+
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('toyota-avanza-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('toyota-avanza-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('toyota-avanza-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('toyota-avanza-img', 'gray')"></button> <!-- Màu xanh -->
+                        <button class="color-btn" style="background-color: #0000ff;"
+                            onclick="changeColor('toyota-avanza-img', 'blue')"></button> <!-- Màu xanh dương -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toyota Veloz Cross -->
+            <div class="product-box">
+                <img id="toyota-veloz-img"
+                    src="https://danviet.mediacdn.vn/296231569849192448/2023/2/15/trai-nghiem-1-nam-nguoi-dung-chi-nhuoc-diem-toyota-veloz-cross-xe-cu-ban-lai-hang-loat-danvietvn-2-16764721951752108340037.jpg"
+                    alt="Toyota Veloz Cross" class="product-img">
+                <h3>Toyota Veloz Cross</h3>
+                <p>Giá: 638.000.000 - 660.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('toyota-veloz-details')" class="details-button">Xem
+                    chi tiết</a>
+
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('toyota-veloz-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('toyota-veloz-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('toyota-veloz-img', 'red')"></button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toyota Raize -->
+            <div class="product-box">
+                <img id="toyota-raize-img" src="https://media.auto5.vn/files/theanh/2021/11/19/toyota-raize-172209.jpg"
+                    alt="Toyota Raize" class="product-img">
+                <h3>Toyota Raize</h3>
+                <p>Giá: 527.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('toyota-raize-details')" class="details-button">Xem
+                    chi tiết</a>
+
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('toyota-raize-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('toyota-raize-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('toyota-raize-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('toyota-raize-img', 'gray')"></button> <!-- Màu xanh -->
+                        <button class="color-btn" style="background-color: yellow;"
+                            onclick="changeColor('toyota-raize-img', 'yellow')"></button> <!-- Màu xanh dương -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Thông tin chi tiết cho từng mẫu xe (ban đầu ẩn) -->
+        <div id="toyota-vios-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('toyota-vios-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Toyota Vios là mẫu sedan cỡ B được trang bị động cơ 1.5L, mang đến trải nghiệm lái êm ái và tiết kiệm
+                    nhiên liệu.</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>107/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>140/4.200</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+
+        <div id="toyota-yaris-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('toyota-yaris-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Toyota Yaris là mẫu hatchback cỡ B với động cơ 1.5L, thiết kế năng động và hiện đại.</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>107/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>140/4.200</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết cho Toyota Avanza -->
+        <div id="toyota-avanza-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('toyota-avanza-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>MPV 7 chỗ nhỏ gọn, phù hợp cho gia đình với không gian rộng rãi và tiết kiệm nhiên liệu. Động cơ 1.5L
+                    kết hợp với hộp số CVT cho khả năng vận hành mượt mà.</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Dual VVT-i</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất</td>
+                        <td>105 mã lực</td>
+                    </tr>
+                    <tr>
+                        <td>Mô-men xoắn</td>
+                        <td>138 Nm</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp số</td>
+                        <td>CVT</td>
+                    </tr>
+                    <tr>
+                        <td>Mức tiêu hao nhiên liệu</td>
+                        <td>6.5 l/100km</td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán</td>
+                        <td>558 - 598 triệu VND</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+
+        <!-- Thông tin chi tiết cho Toyota Veloz -->
+        <div id="toyota-veloz-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('toyota-veloz-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Xe đa dụng thể thao (SUV) với thiết kế hầm hố, hiện đại và nhiều trang bị công nghệ. Toyota Veloz là
+                    sự lựa chọn hoàn hảo cho những chuyến đi xa hoặc sử dụng hàng ngày trong thành phố.</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Dual VVT-i</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất</td>
+                        <td>106 mã lực</td>
+                    </tr>
+                    <tr>
+                        <td>Mô-men xoắn</td>
+                        <td>140 Nm</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp số</td>
+                        <td>CVT</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu hao nhiên liệu</td>
+                        <td>6.8 l/100km</td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán</td>
+                        <td>638 - 660 triệu VND</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+        <!-- Thông tin chi tiết cho Toyota Raize -->
+        <div id="toyota-raize-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('toyota-raize-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Xe SUV nhỏ gọn với thiết kế thể thao, phù hợp cho những người yêu thích sự năng động. Raize được
+                    trang bị nhiều tính năng an toàn và hỗ trợ lái hiện đại.</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.0L Turbo</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất</td>
+                        <td>98 mã lực</td>
+                    </tr>
+                    <tr>
+                        <td>Mô-men xoắn</td>
+                        <td>140 Nm</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp số</td>
+                        <td>CVT</td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu hao nhiên liệu</td>
+                        <td>5.5 l/100km</td>
+                    </tr>
+                    <tr>
+                        <td>Giá bán</td>
+                        <td>527 triệu VND</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+
+    </div>
+
+    </div>
+
+    <h2 id="honda">Xe Honda</h2>
+    <div class="car-product">
+        <!-- Thông tin về xe Honda -->
+        <div class="product-container">
+            <!-- Honda City -->
+            <div class="product-box">
+                <img id="honda-city-img"
+                    src="https://cms.anycar.vn/wp-content/uploads/2022/10/91cebaa5-20221117_040129.jpg" alt="Honda City"
+                    class="product-img">
+                <h3>Honda City</h3>
+                <p>Giá: 499.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('honda-city-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('honda-city-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('honda-city-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('honda-city-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('honda-city-img', 'gray')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honda BR-V -->
+            <div class="product-box">
+                <img id="honda-brv-img" src="https://hondaankhanh.vn/wp-content/uploads/2023/06/Honda-BR-V-L-2023.jpg"
+                    alt="Honda BR-V" class="product-img">
+                <h3>Honda BR-V</h3>
+                <p>Giá: 661.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('honda-brv-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('honda-brv-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #c0c0c0;"
+                            onclick="changeColor('honda-brv-img', 'silver')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('honda-brv-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('honda-brv-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honda HR-V -->
+            <div class="product-box">
+                <img id="honda-hrv-img"
+                    src="https://thitruongoto.com.vn/uploads/news/2022_09/hinh-anh-ve-dong-xe-honda-hr-v-rs-dang-cap.jpeg"
+                    alt="Honda HR-V" class="product-img">
+                <h3>Honda HR-V</h3>
+                <p>Giá: 699.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('honda-hrv-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('honda-hrv-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #c0c0c0;"
+                            onclick="changeColor('honda-hrv-img', 'silver')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('honda-hrv-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('honda-hrv-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #808080;"
+                            onclick="changeColor('honda-hrv-img', 'gray')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honda Civic -->
+            <div class="product-box">
+                <img id="honda-civic-img"
+                    src="https://tse4.mm.bing.net/th?id=OIP.aW0rWuGsSGYehB1PT2EzSAHaEK&pid=Api&P=0&h=220"
+                    alt="Honda Civic" class="product-img">
+                <h3>Honda Civic</h3>
+                <p>Giá: 730.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('honda-civic-details')" class="details-button">Xem
+                    chi tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('honda-civic-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('honda-civic-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('honda-civic-img', 'red')"></button>
+                        <button class="color-btn" style="background-color: #0000ff;"
+                            onclick="changeColor('honda-civic-img', 'blue')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Honda CR-V -->
+            <div class="product-box">
+                <img id="honda-crv-img"
+                    src="https://xehay.vn/uploads/images/2020/11/02/Xehay-Honda-CR-V-2021-review-091120%20(2).jpg"
+                    alt="Honda CR-V" class="product-img">
+                <h3>Honda CR-V</h3>
+                <p>Giá: 998.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('honda-crv-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('honda-crv-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #c0c0c0;"
+                            onclick="changeColor('honda-crv-img', 'silver')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('honda-crv-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #0000ff;"
+                            onclick="changeColor('honda-crv-img', 'blue')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('honda-crv-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Honda City -->
+        <div id="honda-city-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('honda-city-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Honda City sử dụng động cơ 1.5L i-VTEC, công suất cực đại đạt 119 mã lực tại 6.600 vòng/phút, mô-men
+                    xoắn cực đại đạt 145 Nm tại 4.600 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>119/6.600</td>
+                    </tr>
+
+                    <tr>
+                        <td>Dung tích xi lạnh</td>
+                        <td>1.498</td>
+                    </tr>
+                    <tr>
+                        <td>Dung tích nguyên liệu </td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ thông nguyên liệu </td>
+                        <td>Phun xăng điện tử/PGM-FI</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Honda BR-V -->
+        <div id="honda-brv-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('honda-brv-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Honda BR-V sử dụng động cơ 1.5L i-VTEC, công suất cực đại đạt 120 mã lực tại 6.600 vòng/phút, mô-men
+                    xoắn cực đại đạt 145 Nm tại 4.600 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>120/6.600</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>145/4.600</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Honda HR-V -->
+        <div id="honda-hrv-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('honda-hrv-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Honda HR-V được trang bị động cơ 1.8L i-VTEC, công suất đạt 141 mã lực và mô men xoắn đạt 172 Nm...
+                </p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.8L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>141/6.500</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>172/4.300</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Honda Civic -->
+        <div id="honda-civic-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('honda-civic-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Honda Civic mang đến trải nghiệm lái tuyệt vời với động cơ 1.5L Turbo, công suất đạt 176 mã lực...
+                </p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Turbo</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>176/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>220/1.700</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Honda CR-V -->
+        <div id="honda-crv-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('honda-crv-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Honda CR-V là một chiếc SUV đa dụng với động cơ 1.5L Turbo, công suất đạt 188 mã lực...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Turbo</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>188/5.600</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>240/2.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <h2 id="nissan">Xe Nissan</h2>
+    <div class="product-container">
+
+        <!-- Nissan Almera -->
+
+        <div class="nissan-product-box">
+            <img id="nissan-almera-img"
+                src="https://autopro8.mediacdn.vn/134505113543774208/2022/10/12/2023-nissan-almera-versa-facelift-us-debut-3-1665467071617700262676-1665535100474-1665535100536769306641.jpg"
+                alt="Nissan Almera" class="product-img">
+            <h3>Nissan Almera</h3>
+            <p>Giá: Từ 469.000.000 đến 595.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('nissan-almera-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('nissan-almera-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('nissan-almera-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('nissan-almera-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('nissan-almera-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nissan Navara -->
+        <div class="nissan-product-box">
+            <img id="nissan-navara-img" src="https://otosaigon.com/attachments/os_navara-3-jpg.2485081/"
+                alt="Nissan Navara" class="product-img">
+            <h3>Nissan Navara</h3>
+            <p>Giá: Từ 945.000.000 đến 970.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('nissan-navara-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('nissan-navara-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff8c00;"
+                        onclick="changeColor('nissan-navara-img', 'orange')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('nissan-navara-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('nissan-navara-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nissan Terra -->
+        <div class="nissan-product-box">
+            <img id="nissan-terra-img"
+                src="https://tse3.mm.bing.net/th?id=OIP.ExLeOKpTapQP8e94utxWswHaE8&pid=Api&P=0&h=220" alt="Nissan Terra"
+                class="product-img">
+            <h3>Nissan Terra</h3>
+            <p>Giá: Từ 899.000.000 đến 1.098.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('nissan-terra-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('nissan-terra-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('nissan-terra-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('nissan-terra-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('nissan-terra-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Nissan Almera -->
+        <div id="nissan-almera-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('nissan-almera-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Nissan Almera sử dụng động cơ 1.0L Turbo, công suất cực đại đạt 100 mã lực</p>
+                <p>Động cơ Turbo 1.0, hộp số Xtronic-CVT</p>
+                <p>Vô lăng D-cut thể thao</p>
+                <p>Ghế không trọng lực zero gravity</p>
+                <p>Gương gập tự động tích hợp đèn báo rẽ</p>
+                <p>Chức năng tắt máy tạm thời Idling stop</p>
+                <p>Hệ thống an toàn chủ động: ABS, EBD, BA, ESC,TCS, HSA</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.0L Turbo</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp số</td>
+                        <td>số tự động vô cấp</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ thống treo Trước</td>
+                        <td>Kiểu MacPherson kết hợp cùng thanh cân bằng </td>
+                    </tr>
+                    <tr>
+                        <td>Loại vành</td>
+                        <td>Mâm hợp kim đúc</td>
+                    </tr>
+                    <tr>
+                        <td>Kích thước lốp</td>
+                        <td>195/65R15</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Nissan Navara -->
+        <div id="nissan-navara-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('nissan-navara-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Nissan Navara trang bị động cơ 2.3L Twin-Turbo Diesel...</p>
+                <p>2.3L DOHC - 4 xi lanh thẳng hàng </p>
+                <p>YD23 DDTi</p>
+                <p>Số tự động 7 cấp với Chế độ chuyển số tay</p>
+                <p>Hợp kim đúc</p>
+                <p>255/65R17</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.3L Twin-Turbo Diesel</td>
+                    </tr>
+                    <tr>
+                        <td>Hộp số</td>
+                        <td>Số tự động 7 cấp với Chế độ chuyển số tay </td>
+                    </tr>
+                    <tr>
+                        <td>Hệ thống truyền động </td>
+                        <td>Dẫn động cầu sau</td>
+                    </tr>
+                    <tr>
+                        <td>Hệ thống treo Trước </td>
+                        <td>Độc lập, tay đòn kép, lò xo trụ và giảm chấn </td>
+                    </tr>
+                    <tr>
+                        <td>Hệ thống treo sau </td>
+                        <td>Liên kết đa điểm kết hợp với thanh cân bằng </td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Nissan Terra -->
+        <div id="nissan-terra-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('nissan-terra-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Nissan Terra trang bị động cơ 2.5L Turbo Diesel, thích hợp cho các chuyến đi xa...</p>
+                <p>Phanh chủ động 4 bánh hạn chế trượt</p>
+                <p>Khóa điện tử vi sai sau </p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.5L Turbo Diesel</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 id="mitsubishi">Xe Mitsubishi</h2>
+    <div class="mitsubishi-product-container">
+        <!-- Mitsubishi Xpander -->
+        <div class="mitsubishi-product-box">
+            <img id="mitsubishi-xpander-img"
+                src="https://www.hanoiauto.com.vn/w/wp-content/uploads/2020/02/an-toan-car.png" alt="Mitsubishi Xpander"
+                class="product-img">
+            <h3>Mitsubishi Xpander</h3>
+            <p>Giá: 650.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('mitsubishi-xpander-details')" class="details-button">Xem
+                chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('mitsubishi-xpander-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('mitsubishi-xpander-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('mitsubishi-xpander-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('mitsubishi-xpander-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mitsubishi Outlander -->
+        <div class="mitsubishi-product-box">
+            <img id="mitsubishi-outlander-img"
+                src="https://xehay.vn/uploads/images/2017/5/04/xe-hay-mitsubishi-outlander-2017-260617%20(30).jpg"
+                alt="Mitsubishi Outlander" class="product-img">
+            <h3>Mitsubishi Outlander</h3>
+            <p>Giá: 800.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('mitsubishi-outlander-details')"
+                class="details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('mitsubishi-outlander-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('mitsubishi-outlander-img', 'silver')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('mitsubishi-outlander-img', 'red')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mitsubishi Pajero Sport -->
+        <div class="mitsubishi-product-box">
+            <img id="mitsubishi-pajero-img" src="https://oto8s.com/uploads/files/M%C3%ADtubishi/Parjedo%20Sport/1_4.jpg"
+                alt="Mitsubishi Pajero Sport" class="product-img">
+            <h3>Mitsubishi Pajero Sport</h3>
+            <p>Giá: 1.000.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('mitsubishi-pajero-details')" class="details-button">Xem
+                chi tiết</a>
+
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #808080;"
+                        onclick="changeColor('mitsubishi-pajero-img', 'gray')"></button>
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('mitsubishi-pajero-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('mitsubishi-pajero-img', 'red')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mitsubishi Triton -->
+        <div class="mitsubishi-product-box">
+            <img id="mitsubishi-triton-img"
+                src="https://xedoisong.vn/uploads/20221024/xedoisong_mitsubishi_triton_athlete_1_vfuk.jpg"
+                alt="Mitsubishi Triton" class="product-img">
+            <h3>Mitsubishi Triton</h3>
+            <p>Giá: 600.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('mitsubishi-triton-details')" class="details-button">Xem
+                chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ff8c00;"
+                        onclick="changeColor('mitsubishi-triton-img', 'orange')"></button>
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('mitsubishi-triton-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('mitsubishi-triton-img', 'black')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mitsubishi Xforce -->
+        <div class="mitsubishi-product-box">
+            <img id="mitsubishi-xforce-img"
+                src="https://media.techcity.cloud/vietnam.vn/2023/11/mitsubishi-xforce-01-5.jpeg"
+                alt="Mitsubishi Xforce" class="product-img">
+            <h3>Mitsubishi Xforce</h3>
+            <p>Giá: 750.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('mitsubishi-xforce-details')" class="details-button">Xem
+                chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffff00;"
+                        onclick="changeColor('mitsubishi-xforce-img', 'yellow')"></button>
+                    <button class="color-btn" style="background-color: #808080;"
+                        onclick="changeColor('mitsubishi-xforce-img', 'gray')"></button>
+                    <button class="color-btn" style="background-color: #008000;"
+                        onclick="changeColor('mitsubishi-xforce-img', 'green')"></button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Xpander -->
+    <div id="mitsubishi-xpander-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-xpander-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Xpander sử dụng động cơ 1.5L MIVEC, mang đến hiệu suất vận hành ổn định và tiết kiệm nhiên
+                liệu. Xe có thiết kế tinh tế, không gian nội thất rộng rãi và trang bị nhiều công nghệ hiện đại.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L MIVEC</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>104 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>141 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hệ dẫn động</td>
+                    <td>FWD</td>
+                </tr>
+                <tr>
+                    <td>Tiêu hao nhiên liệu (kết hợp)</td>
+                    <td>6.4 L/100km</td>
+                </tr>
+                <tr>
+                    <td>Chỗ ngồi</td>
+                    <td>7 chỗ</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Pajero Sport -->
+    <div id="mitsubishi-pajero-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-pajero-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Pajero Sport là SUV mạnh mẽ và sang trọng, thích hợp cho những chuyến đi khám phá hoặc di
+                chuyển trong đô thị...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.4L MIVEC</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>181 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>430 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 8 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>8.0L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Outlander -->
+    <div id="mitsubishi-outlander-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-outlander-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Outlander là một chiếc SUV với thiết kế hiện đại, không gian rộng rãi và nhiều tính năng
+                thông minh. Xe được trang bị công nghệ an toàn tiên tiến, mang lại cảm giác yên tâm khi lái.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L MIVEC</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>145 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>196 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hệ dẫn động</td>
+                    <td>AWD</td>
+                </tr>
+                <tr>
+                    <td>Tiêu hao nhiên liệu (kết hợp)</td>
+                    <td>7.8 L/100km</td>
+                </tr>
+                <tr>
+                    <td>Chỗ ngồi</td>
+                    <td>5 chỗ</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Pajero Sport -->
+    <div id="mitsubishi-pajero-sport-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-pajero-sport-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Pajero Sport là mẫu SUV mạnh mẽ, thích hợp cho cả đô thị và địa hình gồ ghề, với khả năng
+                vận hành tuyệt vời và tính năng an toàn cao. Nội thất rộng rãi, đầy đủ tiện nghi.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.4L MIVEC</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>181 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>430 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hệ dẫn động</td>
+                    <td>AWD</td>
+                </tr>
+                <tr>
+                    <td>Tiêu hao nhiên liệu (kết hợp)</td>
+                    <td>8.0 L/100km</td>
+                </tr>
+                <tr>
+                    <td>Chỗ ngồi</td>
+                    <td>7 chỗ</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Triton -->
+    <div id="mitsubishi-triton-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-triton-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Triton là mẫu xe bán tải được yêu thích nhờ khả năng chở hàng và off-road tốt, mang lại
+                trải nghiệm lái tuyệt vời. Xe có thiết kế mạnh mẽ, bền bỉ với nhiều công nghệ hỗ trợ lái xe.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.4L MIVEC</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>181 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>430 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hệ dẫn động</td>
+                    <td>4WD</td>
+                </tr>
+                <tr>
+                    <td>Tiêu hao nhiên liệu (kết hợp)</td>
+                    <td>8.1 L/100km</td>
+                </tr>
+                <tr>
+                    <td>Chỗ ngồi</td>
+                    <td>5 chỗ</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết sản phẩm Mitsubishi Xforce -->
+    <div id="mitsubishi-xforce-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('mitsubishi-xforce-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Mitsubishi Xforce mang đến phong cách thể thao với các tính năng an toàn hiện đại, là lựa chọn lý
+                tưởng cho các chuyến đi. Nội thất được thiết kế tiện nghi với công nghệ giải trí cao cấp.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>106 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>141 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hệ dẫn động</td>
+                    <td>FWD</td>
+                </tr>
+                <tr>
+                    <td>Tiêu hao nhiên liệu (kết hợp)</td>
+                    <td>6.8 L/100km</td>
+                </tr>
+                <tr>
+                    <td>Chỗ ngồi</td>
+                    <td>5 chỗ</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+
+    </div>
+
+    <h2 id="kia">Xe Kia</h2>
+    <div class="kia-product-container">
+        <!-- Kia Morning -->
+        <div class="kia-product-box">
+            <img id="kia-morning-img" src="https://cms-i.autodaily.vn/du-lieu/2020/11/14/kia-morning.jpg"
+                alt="Kia Morning" class="product-img">
+            <h3>Kia Morning</h3>
+            <p>Giá: 450.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('kia-morning-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('kia-morning-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('kia-morning-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('kia-morning-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('kia-morning-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kia Soluto -->
+        <div class="kia-product-box">
+            <img id="kia-soluto-img" src="https://cdn.oto360.net/images/car/kia/soluto_trang.webp" alt="Kia Soluto"
+                class="product-img">
+            <h3>Kia Soluto</h3>
+            <p>Giá: 490.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('kia-soluto-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('kia-soluto-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('kia-soluto-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('kia-soluto-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('kia-soluto-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kia K3 -->
+        <div class="kia-product-box">
+            <img id="kia-k3-img" src="https://thekoreancarblog.com/wp-content/uploads/2021/04/kia-k3-realworld-4.jpg"
+                alt="Kia K3" class="product-img">
+            <h3>Kia K3</h3>
+            <p>Giá: 550.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('kia-k3-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('kia-k3-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('kia-k3-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('kia-k3-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('kia-k3-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kia K5 -->
+        <div class="kia-product-box">
+            <img id="kia-k5-img" src="https://i.ytimg.com/vi/7QVJTB2QF4o/maxresdefault.jpg" alt="Kia K5"
+                class="product-img">
+            <h3>Kia K5</h3>
+            <p>Giá: 750.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('kia-k5-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('kia-k5-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('kia-k5-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('kia-k5-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('kia-k5-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kia Seltos -->
+        <div class="kia-product-box">
+            <img id="kia-seltos-img"
+                src="https://img.indianautosblog.com/2020/10/15/kia-seltos-anniversary-edition-front-right-86e7.jpg"
+                alt="Kia Seltos" class="product-img">
+            <h3>Kia Seltos</h3>
+            <p>Giá: 700.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('kia-seltos-details')" class="details-button">Xem chi
+                tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="color-options">
+                    <button class="color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('kia-seltos-img', 'white')"></button>
+                    <button class="color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('kia-seltos-img', 'red')"></button>
+                    <button class="color-btn" style="background-color: #000000;"
+                        onclick="changeColor('kia-seltos-img', 'black')"></button>
+                    <button class="color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('kia-seltos-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+        <!-- Thông tin chi tiết sản phẩm Kia Morning -->
+        <div id="kia-morning-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-morning-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Morning mang đến một thiết kế nhỏ gọn, năng động và tiết kiệm nhiên liệu, phù hợp cho các chuyến
+                    đi trong thành phố...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 349 - 424 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.25L Kappa</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>86 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>120 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia Soluto -->
+        <div id="kia-soluto-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-soluto-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Soluto là mẫu sedan mang lại cảm giác thoải mái và rộng rãi cho người sử dụng, phù hợp cho gia
+                    đình và các chuyến đi dài...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 386 - 449 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.4L MPI</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>100 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>132 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia K3 -->
+        <div id="kia-k3-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-k3-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia K3 sở hữu thiết kế thể thao, sang trọng cùng nhiều công nghệ hiện đại, mang đến trải nghiệm lái
+                    thú vị và an toàn...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 549 - 714 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.6L GDI</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>132 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>165 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia K5 -->
+        <div id="kia-k5-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-k5-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia K5 kết hợp giữa sự tinh tế và tính thể thao, mang lại trải nghiệm lái xe đầy hưng phấn và thoải
+                    mái...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 859 - 999 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.0L MPI</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>152 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>192 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia Seltos -->
+        <div id="kia-seltos-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-seltos-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Seltos là một chiếc SUV nhỏ gọn, mang đến không gian rộng rãi và nhiều trang bị hiện đại, phù hợp
+                    cho các chuyến đi gia đình...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 599 - 799 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.6L Gamma</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>177 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>265 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia Sonet -->
+        <div id="kia-sonet-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-sonet-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Sonet là một chiếc SUV nhỏ gọn với thiết kế thời trang, tích hợp nhiều công nghệ hiện đại và tính
+                    năng an toàn cao...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 499 - 599 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L MPI</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>115 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>144 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia Sportage -->
+        <div id="kia-sportage-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-sportage-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Sportage mang đến cảm giác lái mạnh mẽ, thiết kế hiện đại và không gian nội thất rộng rãi, phù
+                    hợp cho gia đình và các chuyến đi xa...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 799 - 1.059 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.0L MPI</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>155 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>192 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Kia Carnival -->
+        <div id="kia-carnival-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('kia-carnival-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Kia Carnival là một chiếc MPV rộng rãi, tiện nghi với nhiều công nghệ hiện đại, lý tưởng cho các gia
+                    đình lớn...</p>
+                <h4>Giá:</h4>
+                <p><strong>Giá bán: Từ 1.099 - 1.429 triệu VNĐ</strong></p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.2L CRDi</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại</td>
+                        <td>199 Ps</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại</td>
+                        <td>440 Nm</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+
+    <h2 id="mazda">Xe Mazda</h2>
+    <div class="car-product">
+        <!-- Thông tin về xe Mazda -->
+
+        <div class="product-container">
+            <!-- Mazda 2 -->
+            <div class="product-box">
+                <img id="mazda2-img"
+                    src="https://mazda-vinhphuc.vn/wp-content/uploads/2020/07/mazda-2-trang.jpg"
+                    alt="Mazda 2" class="product-img">
+                <h3>Mazda 2</h3>
+                <p>Giá: 420.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('mazda2-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('mazda2-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('mazda2-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('mazda2-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mazda 3 -->
+            <div class="product-box">
+                <img id="mazda3-img"
+                    src="https://static.danhgiaxe.com/data/201520/mazda-3-hatchback-28-850x567_1669.jpg" alt="Mazda 3"
+                    class="product-img">
+                <h3>Mazda 3</h3>
+                <p>Giá: 750.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('mazda3-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('mazda3-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('mazda3-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('mazda3-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mazda CX-5 -->
+            <div class="product-box">
+                <img id="mazda-cx5-img"
+                    src="https://www.topgear.com/sites/default/files/cars-car/carousel/2021/02/cx-5-skyactiv-g-awd-gt-sport-auto-action-3.jpg?w=1784&h=1004"
+                    alt="Mazda CX-5" class="product-img">
+                <h3>Mazda CX-5</h3>
+                <p>Giá: 1.000.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('mazda-cx5-details')" class="details-button">Xem
+                    chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('mazda-cx5-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('mazda-cx5-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('mazda-cx5-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mazda CX-8 -->
+            <div class="product-box">
+                <img id="mazda-cx8-img" src="https://cdn.gianhangvn.com/image/a726211-52db-rgn4q4m.jpg" alt="Mazda CX-8"
+                    class="product-img">
+                <h3>Mazda CX-8</h3>
+                <p>Giá: 1.200.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('mazda-cx8-details')" class="details-button">Xem
+                    chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('mazda-cx8-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('mazda-cx8-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('mazda-cx8-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mazda 6 -->
+            <div class="product-box">
+                <img id="mazda6-img" src="https://cms-i.autodaily.vn/du-lieu/2016/08/12/Mazda6-2017-autodaily-(5).jpg"
+                    alt="Mazda 6" class="product-img">
+                <h3>Mazda 6</h3>
+                <p>Giá: 800.000.000 VND</p>
+                <a href="javascript:void(0);" onclick="showDetails('mazda6-details')" class="details-button">Xem chi
+                    tiết</a>
+                <div style="margin-top: 15px;">
+                    <p>Chọn màu xe:</p>
+                    <div class="color-options">
+                        <button class="color-btn" style="background-color: #ffffff;"
+                            onclick="changeColor('mazda6-img', 'white')"></button>
+                        <button class="color-btn" style="background-color: #000000;"
+                            onclick="changeColor('mazda6-img', 'black')"></button>
+                        <button class="color-btn" style="background-color: #ff0000;"
+                            onclick="changeColor('mazda6-img', 'red')"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Mazda 2 -->
+        <!-- Thông tin chi tiết sản phẩm Mazda 2 -->
+        <div id="mazda2-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('mazda2-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Mazda 2 sử dụng động cơ SkyActiv-G 1.5L cho công suất cực đại đạt 110 mã lực tại 6.000 vòng/phút,
+                    mô-men xoắn cực đại đạt 144 Nm tại 4.000 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>1.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>110/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>144/4.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Mazda 3 -->
+        <div id="mazda3-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('mazda3-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Mazda 3 sử dụng động cơ SkyActiv-G 2.0L, công suất cực đại đạt 153 mã lực tại 6.000 vòng/phút, mô-men
+                    xoắn cực đại đạt 200 Nm tại 4.000 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.0L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>153/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>200/4.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Mazda CX-5 -->
+        <div id="mazda-cx5-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('mazda-cx5-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Mazda CX-5 sử dụng động cơ SkyActiv-G 2.5L, công suất cực đại đạt 187 mã lực tại 6.000 vòng/phút,
+                    mô-men xoắn cực đại đạt 252 Nm tại 4.000 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>187/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>252/4.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+
+        <!-- Thông tin chi tiết sản phẩm Mazda CX-8 -->
+        <div id="mazda-cx8-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('mazda-cx8-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Mazda CX-8 sử dụng động cơ SkyActiv-D 2.2L Diesel, công suất cực đại đạt 180 mã lực tại 4.500
+                    vòng/phút, mô-men xoắn cực đại đạt 450 Nm tại 2.000 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.2L Diesel</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>180/4.500</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>450/2.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+        <!-- Thông tin chi tiết sản phẩm Mazda 6 -->
+        <div id="mazda6-details" class="modal" style="display: none;">
+            <div class="modal-content"
+                style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+                <span class="close" onclick="hideDetails('mazda6-details')"
+                    style="cursor: pointer; font-size: 24px;">&times;</span>
+                <h4>Mô tả:</h4>
+                <p>Mazda 6 sử dụng động cơ SkyActiv-G 2.5L, công suất cực đại đạt 187 mã lực tại 6.000 vòng/phút, mô-men
+                    xoắn cực đại đạt 250 Nm tại 4.000 vòng/phút...</p>
+                <h4>Thông số kỹ thuật:</h4>
+                <table>
+                    <tr>
+                        <th>Thông số</th>
+                        <th>Giá trị</th>
+                    </tr>
+                    <tr>
+                        <td>Động cơ</td>
+                        <td>2.5L Xăng</td>
+                    </tr>
+                    <tr>
+                        <td>Công suất cực đại (Ps/rpm)</td>
+                        <td>187/6.000</td>
+                    </tr>
+                    <tr>
+                        <td>Mô men xoắn cực đại (Nm/rpm)</td>
+                        <td>250/4.000</td>
+                    </tr>
+                </table>
+                <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+            </div>
+        </div>
+
+    </div>
+
+    <h2 id="hyundai">Xe Hyundai</h2>
+    <div class="hyundai-product-container">
+        <!-- Hyundai Accent -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-accent-img"
+                src="https://www.hyundaisg.vn/wp-content/uploads/2020/12/accent_at_trang_2021_hyundaisg-24_result.jpg"
+                alt="Hyundai Accent" class="product-img">
+            <h3>Hyundai Accent</h3>
+            <p>Giá: 426.000.000 - 542.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-accent-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-accent-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-accent-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('hyundai-accent-img', 'silver')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #808080;"
+                        onclick="changeColor('hyundai-accent-img', 'gray')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('hyundai-accent-img', 'red')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #0000ff;"
+                        onclick="changeColor('hyundai-accent-img', 'blue')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hyundai Elantra -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-elantra-img"
+                src="https://www.hyundaisg.vn/wp-content/uploads/2022/06/hyundai-elantra-2023-trang-hyundaisg-6.jpg"
+                alt="Hyundai Elantra" class="product-img">
+            <h3>Hyundai Elantra</h3>
+            <p>Giá: 599.000.000 - 799.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-elantra-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-elantra-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-elantra-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #808080;"
+                        onclick="changeColor('hyundai-elantra-img', 'gray')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('hyundai-elantra-img', 'red')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('hyundai-elantra-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hyundai Stargazer -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-stargazer-img"
+                src="https://ims.baoyenbai.com.vn/NewsImg/8_2022/250089_Untitled-1%20copy.jpg" alt="Hyundai Stargazer"
+                class="product-img">
+            <h3>Hyundai Stargazer</h3>
+            <p>Giá: 489.000.000 - 685.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-stargazer-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-stargazer-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-stargazer-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #808080;"
+                        onclick="changeColor('hyundai-stargazer-img', 'gray')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('hyundai-stargazer-img', 'red')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hyundai Creta -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-creta-img"
+                src="https://www.hyundaisg.vn/wp-content/uploads/2022/03/hyundai-creta-2022-mau-den-db-hyundaisg-19-scaled.jpg"
+                alt="Hyundai Creta" class="product-img">
+            <h3>Hyundai Creta</h3>
+            <p>Giá: 599.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-creta-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-creta-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-creta-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #0000ff;"
+                        onclick="changeColor('hyundai-creta-img', 'blue')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('hyundai-creta-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hyundai Tucson -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-tucson-img"
+                src="https://www.hyundaisg.vn/wp-content/uploads/2021/12/tucson-2022-tieu-chuan-trang-hyundaisg-7-400x350.jpg"
+                alt="Hyundai Tucson" class="product-img">
+            <h3>Hyundai Tucson</h3>
+            <p>Giá: 769.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-tucson-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-tucson-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-tucson-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #ff0000;"
+                        onclick="changeColor('hyundai-tucson-img', 'red')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #0000ff;"
+                        onclick="changeColor('hyundai-tucson-img', 'blue')"></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Hyundai Santa Fe -->
+        <div class="hyundai-product-box">
+            <img id="hyundai-santa-fe-img"
+                src="https://drive.gianhangvn.com/image/hyundai-santa-fe-2-2-dau-1797309j30494.jpg"
+                alt="Hyundai Santa Fe" class="product-img">
+            <h3>Hyundai Santa Fe</h3>
+            <p>Giá: 1.069.000.000 VND</p>
+            <a href="javascript:void(0);" onclick="showDetails('hyundai-santa-fe-details')"
+                class="hyundai-details-button">Xem chi tiết</a>
+            <div style="margin-top: 15px;">
+                <p>Chọn màu xe:</p>
+                <div class="hyundai-color-options">
+                    <button class="hyundai-color-btn" style="background-color: #ffffff;"
+                        onclick="changeColor('hyundai-santa-fe-img', 'white')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #000000;"
+                        onclick="changeColor('hyundai-santa-fe-img', 'black')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #808080;"
+                        onclick="changeColor('hyundai-santa-fe-img', 'gray')"></button>
+                    <button class="hyundai-color-btn" style="background-color: #c0c0c0;"
+                        onclick="changeColor('hyundai-santa-fe-img', 'silver')"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Hyundai Accent -->
+    <div id="hyundai-accent-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-accent-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Accent nổi bật với thiết kế trẻ trung, hiện đại và hiệu suất tiết kiệm nhiên liệu vượt trội, là
+                sự lựa chọn lý tưởng cho những ai thích sự năng động trong đô thị...</p>
+            <h4>Giá:</h4>
+            <p><strong>Giá bán: Từ 426 - 542 triệu VNĐ</strong></p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.4L MPI</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>100 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>132 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 6 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>5.6L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Hyundai Stargazer -->
+    <div id="hyundai-stargazer-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-stargazer-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Stargazer là một chiếc MPV rộng rãi và tiện nghi, phù hợp cho gia đình với thiết kế hiện đại và
+                nhiều tính năng thông minh giúp tăng cường trải nghiệm di chuyển.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L MPI</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>115 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>144 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động vô cấp CVT</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>6.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Hyundai Creta -->
+    <div id="hyundai-creta-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-creta-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Creta là một chiếc SUV nhỏ gọn, phong cách trẻ trung, trang bị đầy đủ tiện nghi và công nghệ hiện
+                đại, phù hợp cho những chuyến đi trong thành phố hoặc khám phá xa.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L MPi</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>115 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>144 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 6 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>7.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Hyundai Tucson -->
+    <div id="hyundai-tucson-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-tucson-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Tucson là mẫu SUV cỡ trung, nổi bật với thiết kế hiện đại, không gian nội thất rộng rãi và nhiều
+                tính năng an toàn, mang lại trải nghiệm lái xe tuyệt vời cho gia đình.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L MPi</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>156 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>192 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 6 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>8.0L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <!-- Thông tin chi tiết sản phẩm Hyundai Santa Fe -->
+    <div id="hyundai-santa-fe-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-santa-fe-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Santa Fe là SUV hạng sang với không gian rộng rãi và nhiều trang bị tiện nghi, mang đến sự thoải
+                mái cho cả gia đình trong những chuyến đi dài.</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.2L CRDi</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>202 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>441 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 8 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>8.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết sản phẩm Hyundai Elantra -->
+    <div id="hyundai-elantra-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('hyundai-elantra-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Hyundai Elantra nổi bật với thiết kế thể thao và hiện đại, mang lại trải nghiệm lái xe thoải mái và tiết
+                kiệm nhiên liệu, phù hợp cho cả gia đình và người trẻ tuổi.</p>
+            <h4>Giá:</h4>
+            <p><strong>Giá bán: 599 - 799 triệu VNĐ</strong></p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.6L MPI</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>128 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>157 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 6 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>6.0L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+
+    <h2 id="ford">Xe Ford</h2>
+    <!-- Ford Ranger -->
+    <div class="ford-product-box">
+        <img id="ford-ranger-img"
+            src="https://fordlongbien.com/wp-content/uploads/2017/08/ford-ranger-wildtrak-2023-fordlongbien_com-17.jpg"
+            alt="Ford Ranger" class="product-img">
+        <h3>Ford Ranger</h3>
+        <p>Giá: Từ 659.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('ford-ranger-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('ford-ranger-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('ford-ranger-img', 'white')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('ford-ranger-img', 'gray')"></button>
+                <button class="color-btn" style="background-color: silver;"
+                    onclick="changeColor('ford-ranger-img', 'silver')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ford Everest -->
+    <div class="ford-product-box">
+        <img id="ford-everest-img"
+            src="https://img.tinxe.vn/resize/1000x-/2022/07/03/uU7VvIGZ/ford-everest-2022-tinxe6-15cb.jpg"
+            alt="Ford Everest" class="product-img">
+        <h3>Ford Everest</h3>
+        <p>Giá: Từ 1.099.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('ford-everest-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('ford-everest-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('ford-everest-img', 'white')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('ford-everest-img', 'gray')"></button>
+                <button class="color-btn" style="background-color: blue;"
+                    onclick="changeColor('ford-everest-img', 'blue')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ford Territory -->
+    <div class="ford-product-box">
+        <img id="ford-territory-img"
+            src="https://oto8s.com/uploads/images/ford/Ford%20Territory/ford-territory-2023-mau-xanh.png"
+            alt="Ford Territory" class="product-img">
+        <h3>Ford Territory</h3>
+        <p>Giá: Từ 822.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('ford-territory-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('ford-territory-img', 'white')"></button>
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('ford-territory-img', 'black')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('ford-territory-img', 'gray')"></button>
+                <button class="color-btn" style="background-color: silver;"
+                    onclick="changeColor('ford-territory-img', 'silver')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ford Explorer -->
+    <div class="ford-product-box">
+        <img id="ford-explorer-img" src="https://longbienford.com/uploads/images/2021/11/image_1200x_6195c54daede6.jpg"
+            alt="Ford Explorer" class="product-img">
+        <h3>Ford Explorer</h3>
+        <p>Giá: Từ 2.366.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('ford-explorer-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('ford-explorer-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('ford-explorer-img', 'white')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('ford-explorer-img', 'gray')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết Ford Ranger -->
+    <div id="ford-ranger-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('ford-ranger-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Ford Ranger là xe bán tải đa dụng, với khả năng vận hành mạnh mẽ và khả năng chinh phục địa hình tuyệt
+                vời...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L EcoBoost</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>213 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>500 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 10 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>9.0L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết Ford Everest -->
+    <div id="ford-everest-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('ford-everest-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Ford Everest là SUV 7 chỗ ngồi, kết hợp giữa sự sang trọng và khả năng off-road mạnh mẽ...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L EcoBlue</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>180 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>420 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 10 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>7.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết Ford Territory -->
+    <div id="ford-territory-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('ford-territory-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Ford Territory là SUV đô thị, nổi bật với thiết kế hiện đại và công nghệ tiên tiến...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L Turbo</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>160 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>248 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 7 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>6.9L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết Ford Explorer -->
+    <div id="ford-explorer-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('ford-explorer-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>Ford Explorer là SUV cỡ lớn, hoàn hảo cho những chuyến đi gia đình và khám phá...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.3L EcoBoost</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>280 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>420 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 10 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>11.3L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+    <h2 id="vinfast">Xe VinFast</h2>
+    <!-- VinFast VF 5 -->
+    <div class="vinfast-product-box">
+        <img id="vinfast-vf5-img"
+            src="https://vinfastvietnam.net.vn/uploads/data/3097/files/files/VF5/vinfastvietnam_net_vn(1).jpg"
+            alt="VinFast VF 5" class="product-img">
+        <h3>VinFast VF 5</h3>
+        <p>Giá: Từ 458.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('vinfast-vf5-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('vinfast-vf5-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('vinfast-vf5-img', 'white')"></button>
+                <button class="color-btn" style="background-color: red;"
+                    onclick="changeColor('vinfast-vf5-img', 'red')"></button>
+                <button class="color-btn" style="background-color: blue;"
+                    onclick="changeColor('vinfast-vf5-img', 'blue')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VinFast VF 6 -->
+    <div class="vinfast-product-box">
+        <img id="vinfast-vf6-img" src="https://cmu-cdn.vinfast.vn/2022/11/08c5b8bc-vf6-ex-1.jpg" alt="VinFast VF 6"
+            class="product-img">
+        <h3>VinFast VF 6</h3>
+        <p>Giá: Từ 708.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('vinfast-vf6-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('vinfast-vf6-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('vinfast-vf6-img', 'white')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('vinfast-vf6-img', 'gray')"></button>
+                <button class="color-btn" style="background-color: red;"
+                    onclick="changeColor('vinfast-vf6-img', 'red')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VinFast VF 8 -->
+    <div class="vinfast-product-box">
+        <img id="vinfast-vf8-img" src="https://tse3.mm.bing.net/th?id=OIP.yu-rxYqPXlkF3lAdYNPp-QHaEK&pid=Api&P=0&h=220"
+            alt="VinFast VF 8" class="product-img">
+        <h3>VinFast VF 8</h3>
+        <p>Giá: Từ 1.258.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('vinfast-vf8-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('vinfast-vf8-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('vinfast-vf8-img', 'white')"></button>
+                <button class="color-btn" style="background-color: blue;"
+                    onclick="changeColor('vinfast-vf8-img', 'blue')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('vinfast-vf8-img', 'gray')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VinFast VF 9 -->
+    <div class="vinfast-product-box">
+        <img id="vinfast-vf9-img" src="https://tse1.mm.bing.net/th?id=OIP.12BAQlxdcSSPr4LffI74hAHaEK&pid=Api&P=0&h=220"
+            alt="VinFast VF 9" class="product-img">
+        <h3>VinFast VF 9</h3>
+        <p>Giá: Từ 1.384.000.000 VNĐ</p>
+        <a href="javascript:void(0);" onclick="showDetails('vinfast-vf9-details')" class="details-button">Xem chi
+            tiết</a>
+
+        <div style="margin-top: 15px;">
+            <p>Chọn màu xe:</p>
+            <div class="color-options">
+                <button class="color-btn" style="background-color: black;"
+                    onclick="changeColor('vinfast-vf9-img', 'black')"></button>
+                <button class="color-btn" style="background-color: white;"
+                    onclick="changeColor('vinfast-vf9-img', 'white')"></button>
+                <button class="color-btn" style="background-color: gray;"
+                    onclick="changeColor('vinfast-vf9-img', 'gray')"></button>
+                <button class="color-btn" style="background-color: red;"
+                    onclick="changeColor('vinfast-vf9-img', 'red')"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết VinFast VF 5 -->
+    <div id="vinfast-vf5-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('vinfast-vf5-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>VinFast VF 5 là xe SUV cỡ nhỏ, với thiết kế năng động và công nghệ tiên tiến...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>1.5L Turbo</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>150 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>220 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 6 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>7.8L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết VinFast VF 6 -->
+    <div id="vinfast-vf6-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('vinfast-vf6-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>VinFast VF 6 là SUV cỡ trung, phù hợp cho gia đình với nhiều tính năng an toàn...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L Turbo</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>185 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>300 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 8 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>8.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết VinFast VF 8 -->
+    <div id="vinfast-vf8-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('vinfast-vf8-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>VinFast VF 8 là mẫu SUV hạng sang, được trang bị nhiều công nghệ hiện đại và an toàn...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L Turbo</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>260 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>400 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 8 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>9.0L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <!-- Thông tin chi tiết VinFast VF 9 -->
+    <div id="vinfast-vf9-details" class="modal" style="display: none;">
+        <div class="modal-content"
+            style="max-width: 400px; max-height: 400px; overflow-y: auto; padding: 20px; border-radius: 10px;">
+            <span class="close" onclick="hideDetails('vinfast-vf9-details')"
+                style="cursor: pointer; font-size: 24px;">&times;</span>
+            <h4>Mô tả:</h4>
+            <p>VinFast VF 9 là SUV cỡ lớn, với không gian rộng rãi và nhiều trang bị tiện nghi...</p>
+            <h4>Thông số kỹ thuật:</h4>
+            <table>
+                <tr>
+                    <th>Thông số</th>
+                    <th>Giá trị</th>
+                </tr>
+                <tr>
+                    <td>Động cơ</td>
+                    <td>2.0L Turbo</td>
+                </tr>
+                <tr>
+                    <td>Công suất cực đại</td>
+                    <td>400 Ps</td>
+                </tr>
+                <tr>
+                    <td>Mô men xoắn cực đại</td>
+                    <td>600 Nm</td>
+                </tr>
+                <tr>
+                    <td>Hộp số</td>
+                    <td>Tự động 8 cấp</td>
+                </tr>
+                <tr>
+                    <td>Tiêu thụ nhiên liệu</td>
+                    <td>10.5L/100km</td>
+                </tr>
+            </table>
+            <p>Để biết thêm chi tiết, hãy gọi số hotline: <strong>0983622424</strong></p>
+        </div>
+    </div>
+
+    <div class="info-company" style="background-color: #d3d3d3; padding: 20px; border-radius: 8px;">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+            alt="Logo" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+        <h4 style="font-size: 18px;">CÔNG TY CỔ PHẦN THƯƠNG MẠI VẬN TẢI HMP TAXI 24H</h4>
+        <p style="font-size: 14px;">Hotline: 024 3323 2323 / 098 3622 424</p>
+        <p style="font-size: 14px;">Email: info@taxi24h.org</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 1: Số 86 ĐÀM QUANG TRUNG, LONG BIÊN, HÀ NỘI</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 2: Số 177 phố Tân Lập, Phường Đình Bảng, Thị xã Từ Sơn, Tỉnh Bắc Ninh,
+            Việt Nam</p>
+        <p style="font-size: 14px;">Mã số doanh nghiệp: 0107018761 do Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp lần đầu
+            ngày 17/10/2015.</p>
+    </div>
+
+    <!-- Nút Hotline -->
+    <a id="hotlineBtn" href="tel:02433232323">
+        <i class="fas fa-phone-alt"></i> 024 3323 2323
+    </a>
+
+    <!-- Nút Facebook -->
+    <a id="facebookBtn" href="https://www.facebook.com/mrChien1984" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <!-- Nút Back to Top -->
+    <button id="backToTop"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; background: none; border: none; cursor: pointer;">
+        <i class="fas fa-chevron-up" style="font-size: 30px; color: #4CAF50;"></i>
+    </button>
+
+
+
+    <script>
+        window.onscroll = function () {
+            const backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        // Chức năng cho nút "Back to Top"
+        document.getElementById("backToTop").onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        // Chức năng mở/đóng ô chat
+        document.getElementById("chatButton").onclick = function () {
+            toggleChat();
+        };
+
+        function toggleChat() {
+            const chatBox = document.getElementById("chatBox");
+            chatBox.style.display = chatBox.style.display === "none" ? "block" : "none";
+        }
+
+        // Chức năng xử lý thông tin người dùng và bắt đầu chat
+        function submitUserInfo() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const topic = document.getElementById("topic").value;
+
+            if (name === "" || age === "" || topic === "") {
+                alert("Vui lòng điền đầy đủ thông tin.");
+                return;
+            }
+
+            // Ẩn form và hiển thị nội dung chat
+            document.getElementById("userInfoForm").style.display = "none";
+            document.getElementById("chatContent").style.display = "block";
+            document.getElementById("chatMessage").style.display = "block";
+
+            // Thêm lời chào với thông tin người dùng
+            const chatContent = document.getElementById("chatContent");
+            chatContent.innerHTML += `<p><strong>Bạn:</strong> Tôi là ${name}, ${age} tuổi. Tôi muốn hỏi về vấn đề "${topic}".</p>`;
+        }
+
+        // Khởi tạo ô chat ẩn
+        document.getElementById("chatBox").style.display = "none";
+
+
+        // Hàm lấy dữ liệu xe từ API
+        async function fetchCars() {
+            try {
+                const response = await fetch('/api/cars');
+                const cars = await response.json();
+                displayCars(cars);
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu:', error);
+            }
+        }
+        function showDetails(id) {
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hideDetails(id) {
+            document.getElementById(id).style.display = 'none';
+
+        }
+        window.onclick = function (event) {
+            const modal = document.getElementById('toyota-yaris-details');
+            if (event.target === modal) {
+                hideDetails('toyota-yaris-details');
+            }
+        }
+        // Hàm hiển thị xe trên trang
+        function displayCars(cars) {
+            const carList = document.getElementById('car-list');
+            carList.innerHTML = ''; // Xóa nội dung trước đó
+
+            cars.forEach(car => {
+                const carItem = document.createElement('div');
+                carItem.className = 'car-item';
+                carItem.innerHTML = `
+                    <img src="${car.image_url}" alt="${car.name}">
+                    <h3>${car.name}</h3>
+                    <p>${car.description}</p>
+                    <p>Giá: ${car.price} VNĐ</p>
+                `;
+                carList.appendChild(carItem);
+            });
+        }
+
+        // Gọi hàm fetchCars khi tải trang
+        window.onload = fetchCars;
+        //oto
+        document.querySelector('.buy-car').addEventListener('click', function (event) {
+            event.preventDefault(); // Ngăn chặn hành động mặc định
+            const dropdown = this.parentElement;
+            dropdown.classList.toggle('active'); // Thay đổi class active để hiện/ẩn menu
+        });
+        function toggleDetails(event) {
+            event.preventDefault();
+            const details = document.getElementById("mazda-details");
+            details.style.display = details.style.display === "none" ? "block" : "none";
+        }
+        function showDetails(id) {
+            var details = document.getElementById(id);
+            if (details.style.display === "none") {
+                details.style.display = "block";
+            } else {
+                details.style.display = "none";
+            }
+        }
+        function showDetails(detailId) {
+            document.getElementById(detailId).style.display = "flex"; // Hiển thị modal
+        }
+
+        function hideDetails(detailId) {
+            document.getElementById(detailId).style.display = "none"; // Ẩn modal
+        }
+
+        // Hàm đổi màu xe dựa trên ID sản phẩm và màu được chọn
+        function changeColor(imgId, color) {
+            var img = document.getElementById(imgId);
+
+            function changeNissanColor(model, color) {
+                const imgElement = document.getElementById(`${model}-img`);
+                if (nissanImages[model] && nissanImages[model][color]) {
+                    imgElement.src = nissanImages[model][color];
+                }
+            }
+            window.onscroll = function () {
+                const backToTopBtn = document.getElementById('backToTop');
+
+                // Kiểm tra vị trí cuộn
+                if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                    backToTopBtn.style.display = "block";  // Hiển thị nút quay lại
+                    facebookBtn.style.display = "block";   // Hiển thị nút Facebook
+                } else {
+                    backToTopBtn.style.display = "none";   // Ẩn nút quay lại
+                    facebookBtn.style.display = "none";    // Ẩn nút Facebook
+                }
+            };
+
+            // Định nghĩa các ảnh cho từng màu tương ứng với từng xe
+            var carImages = {
+                //toyota
+                'toyota-vios-img': {
+                    'white': 'https://static-images.vnncdn.net/files/publish/2023/5/15/image001-1016.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://tse2.mm.bing.net/th?id=OIP.CIotODg602r9wnkijWcZMgHaDE&pid=Api&P=0&h=220',
+                    'red': 'http://giaxetoyota.edu.vn/images/seoworld/xe-Toyota-Vios-2014.jpg',
+                    'blue': 'https://binhxitson.com/wp-content/uploads/2020/10/VIOS-8S9-scaled.jpg',
+                    'gray': 'http://icdn.dantri.com.vn/zoom/1200_630/2022/08/09/2023-toyota-vios-debut-thailand-1-850x445-1660043368431.jpg',
+
+                },
+                'toyota-yaris-img': {
+                    'white': 'https://dailymuabanxe.net/wp-content/uploads/2023/03/Yaris.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://tse3.mm.bing.net/th?id=OIP.D-7UvWEMHl56JsjrRbJbZgHaE7&pid=Api&P=0&h=220',
+                    'red': 'https://media.vov.vn/sites/default/files/styles/large/public/2023-03/z4169868589649_d95c16250aa8354cf7880a08ee6bf9b4.jpg',
+                    'gray': 'https://sohanews.sohacdn.com/160588918557773824/2023/3/10/photo-8-1678416909884458756793-1678417142536343129598.jpeg',
+                    'yellow': 'https://xeotogiadinh.com/wp-content/uploads/2020/10/Yaris-Facelift-1.jpg',
+                    'blue': 'https://sverige.toyota/app/uploads/MC24_YAR_PREM_06_PR-scaled.jpg',
+
+                },
+                'toyota-avanza-img': {
+                    'white': 'https://giaxeotolanbanh.com/wp-content/uploads/2022/05/ngoai-that-avanza-premio-8-a879-1.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://danviet.mediacdn.vn/296231569849192448/2021/11/14/can-canh-toyota-avanza-13e-mt-2022-ban-tieu-chuan-danh-cho-dan-dich-vu-gia-329-trieu-dong-danvietvn-11-16369019407251400029675.jpg',
+                    'red': 'https://danchoioto.vn/wp-content/uploads/2019/11/mau-MPV-nay-co-kha-nang-di-chuyen-linh-hoat-tren-nhieu-dia-hinh-768x428.jpg',
+                    'gray': 'https://toyota-thaibinh3s.com/wp-content/uploads/2021/11/mau-xe-toyota-avanza-silver-mica-metallic-2.jpg',
+                    'blue': 'https://www.toyotatiengiang.com.vn/vnt_upload/news/12_2018/gia_xa_toyota_avanza_1.5AT_1.png'
+
+
+                },
+                'toyota-veloz-img': {
+                    'white': 'https://tapchi.toyota.com.vn/uploads/images/news/e61f2ca3b9314124.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://otohondaquan2.vn/wp-content/uploads/2023/11/toyota-veloz-cross-mau-den.jpg',
+                    'red': 'https://dailytoyotahaiphong.vn/Data/images/Chi-tiet-ngoai-that-noi-that-thong-so-ky-thuat-xe-Toyota-Veloz-Cross.png'
+                },
+                'toyota-raize-img': {
+                    'white': 'https://oto8s.com/uploads/files/Toyota/Toyota%20Raize%202023/RAIZE%20M%C3%80U%20TR%E1%BA%AENG.png', // Thay thế bằng liên kết thực tế
+                    'black': 'https://media.vov.vn/sites/default/files/styles/large/public/2021-05/toyota-raize-1.0t-g-indonesia-1-850x544.jpg',
+                    'red': 'https://danviet.mediacdn.vn/296231569849192448/2023/8/25/gia-xe-toyota-raize-danvietvn-16929705602192069976181.jpg',
+                    'gray': 'https://tse3.mm.bing.net/th?id=OIP.w8FlhY84xVIy9TDm-P1uqAHaEK&pid=Api&P=0&h=220',
+                    'yellow': 'https://static.wixstatic.com/media/b4dcef_30a431c151324929b5d4f9f8d5d0bd51~mv2.png/v1/fill/w_1000,h_666,al_c,q_90,usm_0.66_1.00_0.01/b4dcef_30a431c151324929b5d4f9f8d5d0bd51~mv2.png',
+
+                },
+                //honda 
+                'honda-city-img': {
+                    'white': 'https://cdn.motor1.com/images/mgl/Nk5kp/s3/honda-city.jpg',
+                    'black': 'https://www.honda.com.vn/uploads/images/products/honda-city-black.jpg',
+                    'red': 'https://www.honda.com.vn/uploads/images/products/honda-city-red.jpg',
+                    'gray': 'https://www.honda.com.vn/uploads/images/products/honda-city-gray.jpg'
+                },
+                'honda-brv-img': {
+                    'white': 'https://static.vinfast.vn/1558849309623/honda-br-v-2020.jpg',
+                    'black': 'https://otohondaquan2.vn/wp-content/uploads/2023/11/toyota-veloz-cross-mau-den.jpg',
+                    'red': 'https://dailytoyotahaiphong.vn/Data/images/Chi-tiet-ngoai-that-noi-that-thong-so-ky-thuat-xe-Toyota-Veloz-Cross.png',
+                    'silver': 'https://honda.com.vn/uploads/images/products/honda-brv-silver.jpg'
+                },
+                'honda-hrv-img': {
+                    'white': 'https://honda.com.vn/uploads/images/products/2017/07/11/26.jpg',
+                    'black': 'https://honda.com.vn/uploads/images/products/honda-hrv-black.jpg',
+                    'red': 'https://honda.com.vn/uploads/images/products/honda-hrv-red.jpg',
+                    'gray': 'https://honda.com.vn/uploads/images/products/honda-hrv-gray.jpg'
+                },
+                'honda-civic-img': {
+                    'white': 'https://hondacivic.com.vn/wp-content/uploads/2020/02/2020_Honda_Civic_Front_Diagonal.jpg',
+                    'black': 'https://honda.com.vn/uploads/images/products/honda-civic-black.jpg',
+                    'red': 'https://honda.com.vn/uploads/images/products/honda-civic-red.jpg',
+                    'blue': 'https://honda.com.vn/uploads/images/products/honda-civic-blue.jpg'
+                },
+                'honda-crv-img': {
+                    'white': 'https://honda.com.vn/uploads/images/products/2020/06/26/1.1.jpg',
+                    'black': 'https://honda.com.vn/uploads/images/products/honda-crv-black.jpg',
+                    'red': 'https://honda.com.vn/uploads/images/products/honda-crv-red.jpg',
+                    'blue': 'https://honda.com.vn/uploads/images/products/honda-crv-blue.jpg',
+                    'silver': 'https://honda.com.vn/uploads/images/products/honda-crv-silver.jpg'
+                },
+                //nissan
+                'nissan-almera-img': {
+                    'white': 'https://tse3.mm.bing.net/th?id=OIP.erPVXCmktITX6hhaz0mmUwHaFo&pid=Api&P=0&h=220',
+                    'black': 'https://tse4.mm.bing.net/th?id=OIP.M4QCfb_xRtzqY-JI9dIPtAHaDe&pid=Api&P=0&h=220',
+                    'red': 'http://images.summitmedia-digital.com/topgear/images/2023/05/12/5-1683873814.jpg',
+                    'blue': 'https://tse1.mm.bing.net/th?id=OIP.9iNaEiOpiBwRcBuD2p5HtgHaEH&pid=Api&P=0&h=220',
+                    'gray': 'https://paultan.org/image/2024/02/2024_Nissan_Almera_Kuro_Malaysia_Ext-4.jpg',
+                },
+                'nissan-navara-img': {
+                    'white': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/navara/overview/navara_white.jpg',
+                    'black': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/navara/overview/navara_black.jpg',
+                    'red': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/navara/overview/navara_red.jpg',
+                    'blue': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/navara/overview/navara_blue.jpg',
+                    'gray': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/navara/overview/navara_gray.jpg',
+                },
+                'nissan-terra-img': {
+                    'white': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/terra/overview/terra_white.jpg',
+                    'black': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/terra/overview/terra_black.jpg',
+                    'red': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/terra/overview/terra_red.jpg',
+                    'blue': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/terra/overview/terra_blue.jpg',
+                    'gray': 'https://www.nissan-vn.com/-/media/project/nissan/nissan-vn/vehicles/terra/overview/terra_gray.jpg',
+                },
+                //mazda
+                'mazda2-img': {
+                    'white': 'https://files01.danhgiaxe.com/sc9SsmUBiO2LMI57fEnaDzpGwsg=/fit-in/640x0/20220620/m-u-tr-ng-153128.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://files01.danhgiaxe.com/0P3Z2RmlqViLZOxleAU2Tz2ANoI=/fit-in/640x0/20220620/m-u-xanh-153151.jpg',
+                    'red': 'https://files01.danhgiaxe.com/Pm1mcOvCtotEUJzgZyMi9AoJbQ8=/fit-in/640x0/20220620/m-u--172955.jpg'
+                },
+                'mazda3-img': {
+                    'white': 'https://binhxitson.com/wp-content/uploads/2020/09/Mazda3-A4D.png', // Thay thế bằng liên kết thực tế
+                    'black': 'https://giaxeoto.vn/admin/upload/images/resize/640-gia-xe-mazda3-2023.jpg',
+                    'red': 'https://img1.oto.com.vn/crop/762x429/2023/03/02/AJxaR32b/danh-gia-mazda-3-a0f0.jpg'
+                },
+                'mazda-cx5-img': {
+                    'white': 'http://upload.wikimedia.org/wikipedia/commons/a/a5/Mazda_CX-5_2.0_SKYACTIV-G_AWD_Sports-Line_%E2%80%93_Frontansicht,_3._September_2012,_D%C3%BCsseldorf.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://tse1.mm.bing.net/th?id=OIP.pxGaHiyq0Lb6o7GTs6KngQHaFk&pid=Api&P=0&h=220',
+                    'red': 'https://i1.wp.com/outmotorsports.com/wp-content/uploads/2020/05/IMG_7894.jpg?w=1280&ssl=1'
+                },
+                'mazda-cx8-img': {
+                    'white': 'https://images.squarespace-cdn.com/content/v1/51297e5de4b01fa6748bc904/1669287171089-ROR862LEPDW52MGOKFWE/MazdaCX-8202100002+-+small.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://s1.cdn.autoevolution.com/images/news/gallery/2018-mazda-cx-8-unveiled-new-suv-is-currently-exclusive-to-japan_42.jpg',
+                    'red': 'https://s1.paultan.org/image/2019/04/Mazda-CX-8-Preview_Ext-2.jpg'
+                },
+                'mazda6-img': {
+                    'white': 'http://www.le-pilote-automobile.com/wp-content/uploads/Mazda_6_002.jpg', // Thay thế bằng liên kết thực tế
+                    'black': 'https://s3.caradvice.com.au/wp-content/uploads/2018/02/mazda-6-wagon-facelift-front.jpg',
+                    'red': 'https://tse2.mm.bing.net/th?id=OIP.0aCFFctexqzfpsWKWj5tYAHaEK&pid=Api&P=0&h=220'
+                }
+
+            };
+
+            // Kiểm tra và thay đổi hình ảnh dựa trên màu sắc được chọn
+            if (carImages[imgId] && carImages[imgId][color]) {
+                img.src = carImages[imgId][color];
+            }
+
+        }
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Ngăn chặn menu chuột phải
+        });
+        document.addEventListener('copy', function(e) {
+    e.preventDefault(); // Ngăn chặn việc sao chép
+});
+
+
+
+    </script>
+</body>
+
+</html>

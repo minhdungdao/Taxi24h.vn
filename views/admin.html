@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    <link rel="icon"
+        href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+
+
+
+    <title>Quản lý đơn đăng ký</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            user-select: none;
+            /* Vô hiệu hóa chọn văn bản */
+
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: left;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .button {
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .delete-btn {
+            background-color: red;
+        }
+
+        .delete-btn:hover {
+            background-color: darkred;
+        }
+
+        .edit-btn {
+            background-color: blue;
+        }
+
+        .edit-btn:hover {
+            background-color: darkblue;
+        }
+
+        #editFormContainer {
+            display: none;
+            background-color: #fff;
+            padding: 20px;
+            margin: 20px auto;
+            width: 60%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: relative;
+            /* Đảm bảo không đè lên các phần khác */
+        }
+
+        #editForm input,
+        #editForm select {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #editForm button {
+            padding: 10px 20px;
+            background-color: green;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #editForm button:hover {
+            background-color: darkgreen;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .filter-container {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-container input {
+            padding: 10px;
+            width: 200px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        .filter-buttons {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-buttons button {
+            padding: 10px 15px;
+            margin: 0 5px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        .filter-buttons button:hover {
+            background-color: darkgreen;
+        }
+
+        /* Thêm CSS cho phần ghi chú */
+        #editNotes {
+            height: 100px;
+            /* Đặt chiều cao cho phần ghi chú */
+            resize: vertical;
+            /* Cho phép người dùng thay đổi chiều cao */
+        }
+
+        /* Định dạng phần đăng nhập tổng thể */
+        #loginForm {
+            width: 300px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Định dạng logo */
+        #loginForm .logo {
+            width: 100px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Định dạng tiêu đề */
+        #loginForm h2 {
+            margin-bottom: 20px;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+        }
+
+        /* Định dạng input */
+        #loginForm input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        /* Định dạng nút đăng nhập */
+        #loginForm button {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        /* Hiệu ứng hover cho nút */
+        #loginForm button:hover {
+            background-color: #218838;
+        }
+
+        /* Thêm khoảng cách giữa các phần tử */
+        #loginForm input,
+        #loginForm button {
+            margin-bottom: 15px;
+        }
+
+        /* Định dạng cho thiết bị di động */
+        @media (max-width: 500px) {
+            #loginForm {
+                width: 90%;
+            }
+        }
+
+        /*admin*/
+        /* Định dạng tổng thể cho phần thông tin admin */
+        .admin-container {
+            background-color: #f4f4f4;
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            margin: 50px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Định dạng tiêu đề tài khoản */
+        .admin-container h2 {
+            color: #333;
+            font-family: 'Arial', sans-serif;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* Định dạng tên tài khoản */
+        #adminAccount {
+            color: #007bff;
+            font-weight: bold;
+        }
+
+        /* Định dạng nút đăng xuất */
+        #logoutButton {
+            padding: 10px 20px;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Hiệu ứng hover cho nút đăng xuất */
+        #logoutButton:hover {
+            background-color: #e60000;
+        }
+
+        /* Định dạng nút và tiêu đề căn giữa */
+        .admin-container h2,
+        #logoutButton {
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Định dạng cho thiết bị di động */
+        @media (max-width: 500px) {
+            .admin-container {
+                width: 90%;
+            }
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+
+</head>
+
+<body>
+    <div id="loginForm">
+        <img src="https://scontent.fhan2-4.fna.fbcdn.net/v/t39.30808-6/326937784_508814284612298_6658182361126180681_n.png?stp=dst-jpg&_nc_cat=110&ccb=1-7&_nc_sid=a5f93a&_nc_ohc=UAFjoxZ3-NwQ7kNvgEbPPoK&_nc_zt=23&_nc_ht=scontent.fhan2-4.fna&_nc_gid=AjFdDUg1GGUJM4c93bXz4XC&oh=00_AYAH6aE0nOhFlqLGPrcfNCy87dSC3GZK4XHaZ4rskoeepw&oe=6717E088"
+            alt="Logo" class="logo">
+        <h2>Đăng nhập</h2>
+        <input type="text" id="adminUsername" placeholder="Tên đăng nhập" required>
+        <input type="password" id="adminPassword" placeholder="Mật khẩu" required>
+        <button type="button" id="loginButton">Đăng nhập</button>
+    </div>
+
+
+    <div id="adminInfo" style="display: none;">
+        <div class="admin-container">
+            <h2>Tài khoản: <span id="adminAccount">Admin</span></h2>
+            <button id="logoutButton" onclick="logout()">Đăng xuất</button>
+        </div>
+    </div>
+
+
+    <h1 class="hidden" id="managementTitle">Quản lý đơn đăng ký</h1>
+
+    <div id="contactedContainer" class="hidden">
+        <div class="filter-buttons">
+            <button onclick="filterBy('today')">Hôm nay</button>
+            <button onclick="filterBy('lastWeek')">Tuần trước</button>
+            <button onclick="filterBy('lastMonth')">Tháng trước</button>
+            <button onclick="filterBy('all')">Tất cả</button>
+            <button onclick="exportToExcel()">Tải về Excel</button>
+        </div>
+
+
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Tìm kiếm theo tên" oninput="searchTable()">
+        </div>
+
+        <div class="table-container">
+            <table id="registrationTable">
+                <thead>
+                    <tr>
+                        <th>Đã liên lạc</th>
+                        <th>Id</th>
+                        <th>Họ Và tên</th>
+                        <th>Tuổi</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Loại hình</th>
+                        <th>Loại xe</th>
+                        <th>Kinh nghiệm lái xe</th>
+                        <th>Điểm đến</th>
+                        <th>Thời gian thuê</th>
+                        <th>Ghi chú</th>
+                        <th>Thời gian đăng ký</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dữ liệu đơn sẽ được tải động tại đây -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Form chỉnh sửa đơn đăng ký -->
+    <div id="editFormContainer">
+        <h2>Chỉnh sửa đơn đăng ký</h2>
+        <form id="editForm" onsubmit="updateRegistration(event)">
+            <input type="hidden" id="editId">
+            <label for="editName">Họ và tên:</label>
+            <input type="text" id="editName" name="name" required>
+
+            <label for="editAge">Tuổi:</label>
+            <input type="number" id="editAge" name="age" required>
+
+            <label for="editEmail">Email:</label>
+            <input type="email" id="editEmail" name="email" required>
+
+            <label for="editPhone">Số điện thoại:</label>
+            <input type="text" id="editPhone" name="phone" required>
+
+
+
+            <label for="editServiceType">Loại hình:</label>
+            <select id="editServiceType" name="service_type" required>
+                <option value="buy">Mua xe</option>
+                <option value="rent">Thuê xe</option>
+                <option value="service">Chạy dịch vụ</option>
+            </select>
+
+            <label for="editVehicleType">Loại xe:</label>
+            <select id="editVehicleType" name="vehicle_type" required>
+                <option value="personal">Xe cá nhân</option>
+                <option value="service">Xe dịch vụ</option>
+            </select>
+
+            <label for="editExperience">Kinh nghiệm lái xe (năm):</label>
+            <input type="number" id="editExperience" name="experience" required>
+
+            <label for="editPickupLocation">Điểm đến và Điểm đi:</label>
+            <input type="text" id="editPickupLocation" name="pickup_location" required>
+
+            <label for="editStartTime">Thời gian bắt đầu:</label>
+            <input type="datetime-local" id="editStartTime" name="start_time" required>
+
+            <label for="editReturnTime">Thời gian trả xe:</label>
+            <input type="datetime-local" id="editReturnTime" name="return_time" required>
+
+            <label for="editNotes">Mang xe đến đâu:</label>
+            <textarea id="editNotes" name="notes"></textarea>
+            <label for="editRegistrationDate">Thời gian đăng ký:</label>
+            <input type="datetime-local" id="editRegistrationDate" name="registration_date" required>
+
+
+            <button type="submit">Cập nhật</button>
+        </form>
+    </div>
+
+    <script>
+        let allRegistrations = []; // Biến toàn cục để lưu trữ tất cả đơn đăng ký
+
+        // Kiểm tra trạng thái đăng nhập khi tải trang
+        window.onload = function () {
+            const isLoggedIn = sessionStorage.getItem('isLoggedIn');
+            if (isLoggedIn === 'true') {
+                showAdminInfo();
+                loadRegistrationData();
+            } else {
+                alert('Bạn cần đăng nhập để truy cập trang này.');
+                // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+                document.getElementById('loginForm').style.display = 'block';
+            }
+        };
+
+
+        // Đăng nhập
+        document.getElementById('loginButton').addEventListener('click', function () {
+            const username = document.getElementById('adminUsername').value;
+            const password = document.getElementById('adminPassword').value;
+
+            // Thay vì lưu trữ trạng thái đăng nhập trong localStorage
+            if (username === 'Taxi24h' && password === 'HmpTaxi24h') {
+                // Lưu vào sessionStorage
+                sessionStorage.setItem('isLoggedIn', 'true');
+                showAdminInfo();
+                loadRegistrationData();
+            } else {
+                alert('Thông tin đăng nhập không chính xác');
+            }
+
+        });
+
+        // Hiển thị thông tin admin
+        function showAdminInfo() {
+            document.getElementById('adminInfo').style.display = 'block';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById('managementTitle').classList.remove('hidden');
+            document.getElementById('contactedContainer').classList.remove('hidden');
+        }
+
+        // Đăng xuất
+        function logout() {
+            sessionStorage.removeItem('isLoggedIn'); // Xóa session
+            document.getElementById('adminInfo').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block';
+            document.getElementById('managementTitle').classList.add('hidden');
+            document.getElementById('contactedContainer').classList.add('hidden');
+        }
+
+
+        // Tải dữ liệu đơn
+        function loadRegistrationData() {
+            fetch('/api/quanlydon')
+                .then(response => response.json())
+                .then(data => {
+                    allRegistrations = data; // Lưu trữ tất cả đơn đăng ký
+                    renderRegistrationTable(data); // Hiển thị bảng dữ liệu
+                    allRegistrations.push(newReg);
+                    filterBy('today'); // Hoặc điều chỉnh theo yêu cầu
+
+
+
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Render bảng đăng ký
+        function renderRegistrationTable(data) {
+            const tableBody = document.querySelector('#registrationTable tbody');
+            tableBody.innerHTML = '';
+
+            data.forEach(reg => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td><input type="checkbox" ${reg.contacted ? 'checked' : ''}></td>
+                    <td>${reg.id}</td>
+                    <td>${reg.name}</td>
+                    <td>${reg.age}</td>
+                    <td>${reg.email}</td>
+                    <td>${reg.phone}</td>
+                    <td>${reg.service_type}</td>
+                    <td>${reg.vehicle_type}</td>
+                    <td>${reg.experience}</td>
+                    <td>${reg.pickup_location}</td>
+                    <td>${reg.start_time}</td>
+                    <td>${reg.notes}</td>
+                    <td>${reg.registered_time}</td>
+                    <td>
+                        <button class="button edit-btn" onclick="openEditForm(${reg.id})">Chỉnh sửa</button>
+                        <button class="button delete-btn" onclick="deleteRegistration(${reg.id})">Xóa</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Tìm kiếm trong bảng
+        function searchTable() {
+            const searchValue = document.getElementById('searchInput').value.toLowerCase();
+            const filteredData = allRegistrations.filter(reg => reg.name.toLowerCase().includes(searchValue));
+            renderRegistrationTable(filteredData);
+        }
+
+        // Lọc theo ngày
+        // Lọc theo ngày
+        function filterBy(timeframe) {
+            let filteredData;
+            const currentDate = new Date();
+
+            if (timeframe === 'today') {
+                const todayStart = new Date(currentDate.setHours(0, 0, 0, 0));
+                const todayEnd = new Date(currentDate.setHours(23, 59, 59, 999));
+                filteredData = allRegistrations.filter(reg => {
+                    const registeredTime = new Date(reg.registered_time);
+                    return registeredTime >= todayStart && registeredTime <= todayEnd;
+                });
+            } else if (timeframe === 'lastWeek') {
+                const lastWeekStart = new Date();
+                lastWeekStart.setDate(currentDate.getDate() - 7);
+                filteredData = allRegistrations.filter(reg => new Date(reg.registered_time) >= lastWeekStart);
+            } else if (timeframe === 'lastMonth') {
+                const lastMonthStart = new Date();
+                lastMonthStart.setMonth(currentDate.getMonth() - 1);
+                filteredData = allRegistrations.filter(reg => new Date(reg.registered_time) >= lastMonthStart);
+            } else {
+                filteredData = allRegistrations; // Hiển thị tất cả nếu không có thời gian lọc cụ thể
+            }
+
+            renderRegistrationTable(filteredData);
+        }
+// Giả sử bạn có một hàm để xử lý đơn đăng ký mới
+function handleNewRegistration(data) {
+    // Xử lý đơn đăng ký mới ở đây, ví dụ như:
+    const newRegistration = {
+        id: data.id,
+        name: data.name,
+        age: data.age,
+        email: data.email,
+        phone: data.phone,
+        service_type: data.service_type,
+        vehicle_type: data.vehicle_type,
+        experience: data.experience,
+        pickup_location: data.pickup_location,
+        start_time: data.start_time,
+        return_time: data.return_time,
+        notes: data.notes,
+        registered_time: new Date().toISOString() // Thời gian hiện tại
+    };
+
+    loadNewRegistration(newRegistration); // Gọi hàm để thêm và lọc
+}
+
+
+
+        // Mở form chỉnh sửa
+        function openEditForm(id) {
+            const reg = allRegistrations.find(r => r.id === id);
+            document.getElementById('editId').value = reg.id;
+            document.getElementById('editName').value = reg.name;
+            document.getElementById('editAge').value = reg.age;
+            document.getElementById('editEmail').value = reg.email;
+            document.getElementById('editPhone').value = reg.phone;
+            document.getElementById('editServiceType').value = reg.service_type;
+            document.getElementById('editVehicleType').value = reg.vehicle_type;
+            document.getElementById('editExperience').value = reg.experience;
+            document.getElementById('editPickupLocation').value = reg.pickup_location;
+            document.getElementById('editStartTime').value = reg.start_time;
+            document.getElementById('editReturnTime').value = reg.return_time;
+            document.getElementById('editNotes').value = reg.notes;
+
+            document.getElementById('editFormContainer').style.display = 'block';
+        }
+
+        // Cập nhật đơn đăng ký// Cập nhật đơn đăng ký
+        function updateRegistration(event) {
+            event.preventDefault();
+            const id = document.getElementById('editId').value;
+            const updatedReg = {
+                id,
+                name: document.getElementById('editName').value,
+                age: document.getElementById('editAge').value,
+                email: document.getElementById('editEmail').value,
+                phone: document.getElementById('editPhone').value,
+                service_type: document.getElementById('editServiceType').value,
+                vehicle_type: document.getElementById('editVehicleType').value,
+                experience: document.getElementById('editExperience').value,
+                pickup_location: document.getElementById('editPickupLocation').value,
+                start_time: document.getElementById('editStartTime').value,
+                return_time: document.getElementById('editReturnTime').value,
+                notes: document.getElementById('editNotes').value,
+                registered_time: new Date().toISOString()
+            };
+
+            const index = allRegistrations.findIndex(reg => reg.id == id);
+            allRegistrations[index] = updatedReg;
+
+            // Lọc lại dữ liệu sau khi cập nhật
+            filterBy('today'); // Hoặc thời gian mà bạn muốn
+            document.getElementById('editFormContainer').style.display = 'none';
+        }
+
+
+        // Xóa đơn đăng ký
+        function deleteRegistration(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa đơn này không?')) {
+                fetch(`/api/quanlydon/${id}`, { // Thay đổi URL theo API của bạn
+                    method: 'DELETE' // Gửi yêu cầu xóa
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            allRegistrations = allRegistrations.filter(reg => reg.id !== id);
+                            renderRegistrationTable(allRegistrations);
+                        } else {
+                            alert('Không thể xóa đơn này. Vui lòng thử lại sau.');
+                        }
+                    })
+                    .catch(error => console.error('Error deleting registration:', error));
+            }
+        }
+
+        // Xuất dữ liệu ra file Excel
+        function exportToExcel() {
+            // Tạo một bảng Excel từ allRegistrations
+            const data = allRegistrations.map(reg => ({
+                ID: reg.id,
+                Name: reg.name,
+                Age: reg.age,
+                Email: reg.email,
+                Phone: reg.phone,
+                Service_Type: reg.service_type,
+                Vehicle_Type: reg.vehicle_type,
+                Experience: reg.experience,
+                Pickup_Location: reg.pickup_location,
+                Start_Time: reg.start_time,
+                Return_Time: reg.return_time,
+                Notes: reg.notes,
+                Registered_Time: reg.registered_time
+            }));
+
+            // Chuyển đổi dữ liệu thành CSV
+            const csvContent = "data:text/csv;charset=utf-8,"
+                + data.map(e => Object.values(e).join(",")).join("\n");
+
+            // Tạo một liên kết để tải xuống
+            const encodedUri = encodeURI(csvContent);
+            const link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "registrations.csv");
+            document.body.appendChild(link); // Thêm liên kết vào body
+
+            link.click(); // Nhấp vào liên kết để tải xuống
+            document.body.removeChild(link); // Xóa liên kết sau khi tải xuống
+        }
+
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Ngăn chặn menu chuột phải
+        });
+        document.addEventListener('copy', function (e) {
+            e.preventDefault(); // Ngăn chặn việc sao chép
+        });
+        document.onkeydown = function (e) {
+            // Ngăn chặn F12
+            if (e.keyCode === 123) {
+                return false;
+            }
+            // Ngăn chặn Ctrl + Shift + I
+            if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
+                return false;
+            }
+            // Ngăn chặn Ctrl + U (Xem nguồn)
+            if (e.ctrlKey && e.keyCode === 85) {
+                return false;
+            }
+        };
+
+
+    </script>
+</body>
+
+</html>

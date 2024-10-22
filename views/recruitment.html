@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon"
+        href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+
+
+
+    <title>Form Tư Vấn</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f1e7;
+            /* Màu nền nhạt cam */
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            user-select: none;
+            /* Vô hiệu hóa chọn văn bản */
+
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            border-left: 10px solid #ff7f50;
+            /* Đường viền cam */
+            margin: 20px auto;
+            /* Để căn giữa form */
+        }
+
+        .form-container h1 {
+            text-align: center;
+            color: #ff7f50;
+            /* Màu cam cho tiêu đề */
+            margin-bottom: 20px;
+        }
+
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .form-row div {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .form-row div:last-child {
+            margin-right: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        input[type="datetime-local"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #ff7f50;
+            /* Màu nền cam cho nút */
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #e67344;
+            /* Màu cam đậm hơn khi hover */
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .alert {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* CSS cho nút Hotline */
+        #hotlineBtn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff5722, #ff8a3d);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #hotlineBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+
+        /* Hiệu ứng ánh sáng phát sáng */
+        #hotlineBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            /* Ánh sáng mềm mại */
+            filter: blur(15px);
+            opacity: 0;
+            /* Ẩn ban đầu */
+            transition: opacity 0.3s;
+        }
+
+        #hotlineBtn:hover:before {
+            opacity: 1;
+            /* Hiện lên khi hover */
+        }
+
+        /* CSS cho nút Facebook */
+        #facebookBtn {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: #3b5998;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #facebookBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+                    alt="Logo" class="logo" style="width: 60px;">
+            </a>
+            <a href="/introduction" class="introduction">Giới thiệu</a>
+            <a href="/buy-car" class="buy-car">Mua xe</a>
+            <a href="/inform-company.html" class="inform-company">Tin tức</a>
+            <a href="/recruitment" class="recruitment">Đơn Tư Vấn</a> <!-- Liên kết Tuyển dụng -->
+            <a href="/dich-vu-khac.html" class="service">Các dịch vụ khác</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h1>Form Tư Vấn</h1>
+        <form id="consultation-form" method="POST" onsubmit="return submitForm(event)">
+
+            <!-- Họ và tên cùng với Tuổi trên 1 hàng -->
+            <div class="form-row">
+                <div>
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div>
+                    <label for="age">Tuổi:</label>
+                    <input type="number" id="age" name="age">
+                </div>
+            </div>
+
+            <!-- Email cùng với Số điện thoại trên 1 hàng -->
+            <div class="form-row">
+                <div>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div>
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="text" id="phone" name="phone" required>
+                </div>
+            </div>
+
+            <!-- Loại hình dịch vụ -->
+            <label for="service_type">Loại hình:</label>
+            <select id="service_type" name="service_type" onchange="toggleRentalFields()">
+                <option value="">Lựa chọn ở đây</option>
+                <option value="Mua xe">Mua xe</option>
+                <option value="Thuê xe">Thuê xe</option>
+                <option value="Chạy dịch vụ">Khoán lái</option>
+                <option value="Khác">Khác</option>
+            </select><br><br>
+
+            <!-- Loại xe -->
+            <label for="vehicle_type">Loại xe:</label>
+            <input type="text" id="vehicle_type" name="vehicle_type"><br><br>
+
+            <!-- Các trường chỉ hiện khi chọn 'Thuê xe' -->
+            <div id="rental-fields" class="hidden">
+                <label for="pickup_location">Đi từ đâu đến đâu :</label>
+                <input type="text" id="pickup_location" name="pickup_location"><br><br>
+
+                <label for="start_time">Thời gian đi:</label>
+                <input type="datetime-local" id="start_time" name="start_time"><br><br>
+
+                <label for="return_time">Thời gian trả:</label>
+                <input type="datetime-local" id="return_time" name="return_time"><br><br>
+
+                <label for="notes">Địa điểm cần mang xe tới:</label>
+                <input type="text" id="notes" name="notes"><br><br>
+            </div>
+
+            <!-- Kinh nghiệm -->
+            <label for="experience">Kinh nghiệm (năm):</label>
+            <input type="number" id="experience" name="experience"><br><br>
+            <!-- Ô dấu tích với điều khoản -->
+            <div style="display: flex; align-items: center;">
+                <input type="checkbox" id="terms" required style="margin-right: 10px;">
+                <label for="terms" style="margin-right: 10px;">Bạn đã đọc kỹ điều khoản của công ty</label>
+                <a href="https://sg.docworkspace.com/d/sIH6Ugqpn3ZnMuAY" download>Xem điều khoản</a>
+            </div><br>
+            <!-- Ghi chú thêm về điều khoản -->
+         <!-- Ghi chú thêm về điều khoản -->
+         <div style="font-size: 14px; color: #333;">
+            Để biết rõ hơn về các điều khoản cũng như xác nhận nộp đơn, vui lòng liên hệ với số 
+            <a href="https://zalo.me/0986968496" style="color: #007bff; text-decoration: underline;">0986968496</a>.
+        </div>
+
+
+            <!-- Nút Gửi -->
+            <input type="submit" value="Gửi">
+        </form>
+
+        <!-- Phần thông báo -->
+        <div id="message" class="alert hidden"></div>
+    </div>
+
+
+    <div class="info-company" style="background-color: #d3d3d3; padding: 20px; border-radius: 8px;">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+            alt="Logo" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+        <h4 style="font-size: 18px;">CÔNG TY CỔ PHẦN THƯƠNG MẠI VẬN TẢI HMP TAXI 24H</h4>
+        <p style="font-size: 14px;">Hotline: 024 3323 2323 / 098 3622 424</p>
+        <p style="font-size: 14px;">Email: info@taxi24h.org</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 1: Số 86 ĐÀM QUANG TRUNG, LONG BIÊN, HÀ NỘI</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 2: Số 177 phố Tân Lập, Phường Đình Bảng, Thị xã Từ Sơn, Tỉnh Bắc Ninh,
+            Việt Nam</p>
+        <p style="font-size: 14px;">Mã số doanh nghiệp: 0107018761 do Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp lần đầu
+            ngày 17/10/2015.</p>
+    </div>
+    <!-- Nút Back to Top -->
+    <button id="backToTop"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; background: none; border: none; cursor: pointer;">
+        <i class="fas fa-chevron-up" style="font-size: 30px; color: #4CAF50;"></i>
+    </button>
+
+    <!-- Nút Hotline -->
+    <a id="hotlineBtn" href="tel:02433232323">
+        <i class="fas fa-phone-alt"></i> 024 3323 2323
+    </a>
+
+    <!-- Nút Facebook -->
+    <a id="facebookBtn" href="https://www.facebook.com/mrChien1984" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <script>
+        // Chức năng cho nút "Back to Top"
+        window.onscroll = function () {
+            const backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+        document.getElementById("backToTop").onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+        function toggleRentalFields() {
+            const serviceType = document.getElementById('service_type').value;
+            const rentalFields = document.getElementById('rental-fields');
+
+            // Hiển thị các trường liên quan đến "Thuê xe" khi chọn dịch vụ "Thuê xe"
+            if (serviceType === 'Thuê xe') {
+                rentalFields.classList.remove('hidden');
+            } else {
+                rentalFields.classList.add('hidden');
+            }
+        }
+
+        function validateForm() {
+            const name = document.getElementById('name').value.trim(); // Thêm kiểm tra trường "Họ và tên"
+            const phone = document.getElementById('phone').value.trim(); // Lấy giá trị số điện thoại
+            const phonePattern = /^[0-9]{10,15}$/;
+
+            // Kiểm tra trường "Họ và tên"
+            if (!name) {
+                alert("Tên không được để trống.");
+                return false;
+            }
+
+            // Kiểm tra trường số điện thoại không được để trống
+            if (!phone) {
+                alert("Số điện thoại không được để trống.");
+                return false;
+            }
+
+            // Kiểm tra định dạng số điện thoại
+            if (!phonePattern.test(phone)) {
+                alert("Vui lòng nhập số điện thoại hợp lệ (10-15 số).");
+                return false;
+            }
+
+            return true; // Trả về true nếu form hợp lệ
+        }
+
+        function submitForm(event) {
+            event.preventDefault(); // Ngăn chặn form gửi mặc định
+
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData.entries());
+
+            // Kiểm tra giá trị của các trường bắt buộc
+            if (!data.name || !data.email || !data.phone || !data.service_type) {
+                document.getElementById('message').innerText = 'Vui lòng cung cấp đầy đủ thông tin!';
+                document.getElementById('message').classList.remove('hidden');
+                return;
+            }
+
+            // Gửi dữ liệu đến server
+            fetch('http://localhost:3000/recruitment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => response.json())
+                .then(result => {
+                    document.getElementById('message').innerText = result.message;
+                    document.getElementById('message').classList.remove('hidden');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('message').innerText = 'Có lỗi xảy ra!';
+                    document.getElementById('message').classList.remove('hidden');
+                });
+        }
+        function submitForm(event) {
+    event.preventDefault();
+
+    // Thu thập dữ liệu từ form
+    const formData = new FormData(document.getElementById('consultation-form'));
+
+    // Gửi dữ liệu lên server
+    fetch('/recruitment', {
+        method: 'POST',
+        body: new URLSearchParams(formData) // Chuyển FormData thành URLSearchParams để gửi đi
+    })
+    .then(response => response.text())
+    .then(data => {
+        alert(data); // Hiển thị thông báo khi gửi thành công
+    })
+    .catch(error => {
+        console.error('Lỗi khi gửi form:', error);
+        alert('Có lỗi xảy ra khi gửi form!');
+    });
+}
+
+
+
+        // Gán sự kiện submit cho form
+        document.getElementById('consultation-form').addEventListener('submit', submitForm);
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Ngăn chặn menu chuột phải
+        });
+        document.addEventListener('copy', function(e) {
+    e.preventDefault(); // Ngăn chặn việc sao chép
+});
+
+
+
+    </script>
+</body>
+
+</html>

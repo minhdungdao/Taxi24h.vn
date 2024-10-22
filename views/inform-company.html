@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Công ty</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=1.1">
+
+
+   
+    <link rel="icon"
+        href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+            /* Ẩn thanh cuộn ngang */
+            max-width: 1200px;
+            /* Chiều rộng tối đa */
+            margin-left: auto;
+            /* Giữa trang */
+            margin-right: auto;
+            /* Giữa trang */
+            box-sizing: border-box;
+            /* Đảm bảo padding không làm tăng */
+            user-select: none;
+            /* Vô hiệu hóa chọn văn bản */
+        }
+
+        nav {
+            /* display: flex; */
+            /* justify-content: space-between; */
+            align-items: center;
+            background-color: white;
+            /* padding: 20px; */
+            width: 100%;
+            /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .hotline {
+            color: #ff5722;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .hotline:hover {
+            text-decoration: underline;
+            transition: text-decoration 0.3s ease;
+        }
+
+        /* Nếu bạn muốn thêm các phong cách cho dropdown */
+        .dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none; /* Ẩn nội dung dropdown ban đầu */
+    position: absolute; /* Đặt vị trí tương đối so với dropdown */
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+}
+
+.dropdown.active .dropdown-content {
+    display: block; /* Hiển thị khi dropdown được kích hoạt */
+}
+
+
+        .logo {
+            width: 60px;
+        }
+
+        /* Hero section styles */
+        .hero-section {
+            position: relative;
+            height: 700px;
+            /* Tăng chiều cao để hiển thị ảnh rõ hơn */
+            background-image: url('https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/433449133_808700867959028_8565686193935847985_n.jpg?stp=dst-jpg_s600x600&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeH6m33h25nnmp4hx_ZGbd1QtODTYj0fL8-04NNiPR8vzztKZd0pRD5FsRp5OQLymQAXtfL9gK97f0QrdS7a6Anz&_nc_ohc=wxsBRnZP0yUQ7kNvgF4-nxU&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A2-BCvwTNYQn1Iyt6LNNBVN&oh=00_AYBrHzPQKz2nJEgGyT_DW-tq3cuHD5xvXfb3eOEd4MTV4g&oe=671BC50E');
+            /* Thay thế bằng URL mới */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin: 0;
+            /* Bỏ margin */
+            padding: 20px;
+            text-align: center;
+        }
+
+
+        .hero-title {
+            font-size: 36px;
+            /* Kích thước chữ tiêu đề */
+            font-weight: bold;
+        }
+
+        /* Small menu styles */
+        .small-menu {
+            margin: 0;
+            /* Bỏ margin */
+            padding: 10px 0;
+            /* Padding trên và dưới */
+            display: flex;
+            /* Sử dụng flexbox */
+            justify-content: center;
+            /* Căn giữa menu */
+            background-color: #f8f9fa;
+            /* Màu nền cho menu */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng cho menu */
+            border-radius: 8px;
+            /* Bo góc cho menu */
+        }
+
+        .small-menu a {
+            text-decoration: none;
+            /* Bỏ gạch chân */
+            color: #007BFF;
+            /* Màu chữ chính */
+            padding: 10px 15px;
+            /* Padding cho link */
+            border-radius: 4px;
+            /* Bo góc cho các liên kết */
+            transition: background-color 0.3s, color 0.3s;
+            /* Hiệu ứng chuyển tiếp */
+        }
+
+        .small-menu a:hover {
+            background-color: #007BFF;
+            /* Màu nền khi hover */
+            color: white;
+            /* Màu chữ khi hover */
+            text-decoration: none;
+            /* Không gạch chân khi hover */
+        }
+
+
+        .article {
+            background-color: white;
+            padding: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            /* Giới hạn chiều rộng tối đa của article */
+            /* Giữ margin phía trên và dưới, căn giữa */
+        }
+
+        .article h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .article .date,
+        .article .time,
+        .article .location {
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 10px;
+        }
+
+        .article img {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .article p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid #007BFF;
+            padding-bottom: 5px;
+        }
+
+        #news-article {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .news-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            /* Khoảng cách giữa các khung */
+        }
+
+        .news-article {
+            border: 1px solid #ddd;
+            /* Khung viền */
+            border-radius: 4px;
+            /* Bo góc nhẹ */
+            padding: 10px;
+            /* Padding cho khung */
+            width: calc(48% - 4px);
+            /* Chiều rộng khung */
+            background-color: #fff;
+            /* Màu nền của khung */
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .news-article h3 {
+            margin-top: 0;
+            font-size: 14px;
+            /* Kích thước tiêu đề lớn hơn */
+        }
+
+        .news-article p {
+            font-size: 12px;
+            /* Kích thước văn bản lớn hơn */
+            margin: 2px 0;
+            /* Khoảng cách giữa các đoạn văn */
+        }
+
+        /* Bỏ phần ảnh */
+        .news-article img {
+            display: none;
+            /* Ẩn ảnh */
+        }
+
+        #offers-article {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .offers-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            /* Khoảng cách giữa các ưu đãi */
+        }
+
+        .offer-item {
+            border: 1px solid #ddd;
+            /* Viền khung */
+            border-radius: 4px;
+            /* Bo góc khung */
+            padding: 10px;
+            /* Padding cho khung */
+            background-color: #fff;
+            /* Màu nền của khung */
+        }
+
+        .offer-item h3 {
+            margin-top: 0;
+            /* Xóa khoảng cách trên tiêu đề */
+            color: #d9534f;
+            /* Màu đỏ cho tiêu đề */
+            font-size: 16px;
+            /* Kích thước tiêu đề */
+        }
+
+        .offer-item p {
+            margin: 5px 0;
+            /* Khoảng cách giữa các đoạn văn */
+            font-size: 14px;
+            /* Kích thước văn bản */
+        }
+
+        /* CSS cho nút Hotline */
+        #hotlineBtn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff5722, #ff8a3d);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #hotlineBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+
+        /* Hiệu ứng ánh sáng phát sáng */
+        #hotlineBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            /* Ánh sáng mềm mại */
+            filter: blur(15px);
+            opacity: 0;
+            /* Ẩn ban đầu */
+            transition: opacity 0.3s;
+        }
+
+        #hotlineBtn:hover:before {
+            opacity: 1;
+            /* Hiện lên khi hover */
+        }
+
+        /* CSS cho nút Facebook */
+        #facebookBtn {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: #3b5998;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #facebookBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+                    alt="Logo" class="logo" style="width: 60px;">
+            </a>
+    
+            <a href="/introduction" class="introduction">Giới thiệu</a>
+            <a href="/buy-car" class="buy-car">Dịch vụ xe</a>
+            
+            <div class="dropdown">
+                <a href="#" class="inform-company">Tin tức</a>
+                <div class="dropdown-content">
+                    <a href="#company-article" onclick="showSection('company-article')">Công ty</a>
+                    <a href="#news-article" onclick="showSection('news-article')">Tin tức</a>
+                    <a href="#offers-article" onclick="showSection('offers-article')">Ưu đãi</a>
+                </div>
+            </div>
+    
+            <a href="/recruitment" class="recruitment">Đơn Tư Vấn</a>
+            <a href="/dich-vu-khac.html" class="service">Các dịch vụ khác</a>
+        
+        </div>
+
+        <!-- <div class="nav-right">
+            <div class="hotline">
+                <i class="fas fa-phone-alt"></i>
+                <a href="tel:02433232323" class="hotline">Hotline: 024 3323 2323</a>
+            </div>
+        </div> -->
+    </nav>
+
+    <div class="hero-section">
+        <h1 class="hero-title">Tin tức</h1>
+    </div>
+
+    <div class="small-menu">
+        <!-- <a href="#company-article">Công ty</a> 
+    <a href="#news-article">Tin tức</a> -->
+
+        <a href="#company-article" onclick="showSection('company-article')">Công ty</a>
+        <a href="#news-article" onclick="showSection('news-article')">Tin tức</a>
+        <a href="#offers-article" onclick="showSection('offers-article')">Ưu đãi</a>
+
+    </div>
+
+    <div id="company-article" class="article">
+        <h2>Công ty Vận Tải HMP Taxi 24h Kỷ Niệm 10 Năm Thành Lập</h2>
+        <p class="date">Ngày: 15 tháng 10 năm 2024</p>
+        <p class="time">Thời gian đăng: 10:00 AM</p> <!-- Thời gian đăng bài -->
+
+        <p class="location">Địa điểm: Hà Nội, Việt Nam</p>
+        <img src="https://scontent.fhan8-1.fna.fbcdn.net/v/t1.6435-9/72714460_2127922567503550_5362580214553509888_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=F8bll0QOGOwQ7kNvgF2vWfM&_nc_zt=23&_nc_ht=scontent.fhan8-1.fna&_nc_gid=AhYGstjm93_aPMBos4jPIYp&oh=00_AYCSCSZ0c_Y2VKyFYUSV9xE286W7uYtkwa4opBRWO71NLA&oe=673546C1"
+            alt="Kỷ niệm HMP Taxi">
+        <p>
+            Công ty Vận Tải HMP Taxi 24h tự hào kỷ niệm 10 năm thành lập. Sự kiện diễn ra tại Hà Nội với sự tham gia của
+            các đối tác, khách hàng thân thiết và toàn thể nhân viên công ty. Đây là một dấu mốc quan trọng trong hành
+            trình phát triển của công ty.
+        </p>
+        <p>
+            Trong suốt 10 năm qua, HMP Taxi 24h đã không ngừng mở rộng và cải tiến dịch vụ, với mục tiêu mang đến cho
+            khách hàng những trải nghiệm vận tải an toàn, tiện lợi và nhanh chóng. Công ty đã xây dựng một đội ngũ lái
+            xe chuyên nghiệp, hệ thống xe chất lượng cao cùng với các giải pháp công nghệ tiên tiến, giúp tối ưu hóa quy
+            trình vận hành và quản lý dịch vụ.
+        </p>
+        <p>
+            Từ những ngày đầu thành lập với một vài chiếc xe và đội ngũ nhân viên nhỏ bé, HMP Taxi 24h đã nhanh chóng
+            vươn lên trở thành một trong những công ty vận tải hàng đầu tại Việt Nam. Công ty hiện có hàng trăm đầu xe,
+            phủ khắp các tỉnh thành trên cả nước, sẵn sàng phục vụ mọi nhu cầu vận chuyển của khách hàng.
+        </p>
+        <p>
+            Nhìn lại chặng đường 10 năm phát triển, công ty đã đạt được nhiều thành tựu đáng kể, từ việc gia tăng số
+            lượng xe, mở rộng mạng lưới phục vụ đến việc áp dụng các giải pháp vận hành thông minh. HMP Taxi 24h luôn
+            chú trọng đến việc cải thiện chất lượng dịch vụ, đặc biệt là việc lắng nghe và phản hồi nhanh chóng các ý
+            kiến đóng góp từ khách hàng.
+        </p>
+        <p>
+            Ngoài ra, công ty cũng đã thực hiện nhiều chương trình ưu đãi và tri ân khách hàng, như giảm giá đặc biệt
+            cho khách hàng thân thiết, tặng quà cho khách hàng nhân các dịp lễ lớn và tổ chức các sự kiện cộng đồng nhằm
+            tạo dựng mối quan hệ gắn kết với người dân địa phương.
+        </p>
+        <p>
+            Với tầm nhìn chiến lược dài hạn, HMP Taxi 24h cam kết tiếp tục đầu tư vào công nghệ và con người, nhằm nâng
+            cao chất lượng dịch vụ, đảm bảo an toàn cho khách hàng trong mọi hành trình. Công ty cũng đặt mục tiêu mở
+            rộng thị trường ra các nước trong khu vực, với mong muốn trở thành thương hiệu vận tải uy tín không chỉ tại
+            Việt Nam mà còn trên toàn khu vực Đông Nam Á.
+        </p>
+        <p>
+            HMP Taxi 24h cũng rất chú trọng đến trách nhiệm xã hội của doanh nghiệp. Trong suốt 10 năm qua, công ty đã
+            đóng góp tích cực vào các hoạt động từ thiện, bảo vệ môi trường và phát triển cộng đồng. Các chiến dịch bảo
+            vệ môi trường, như giảm thiểu khí thải từ các phương tiện vận tải, được công ty thực hiện một cách nghiêm
+            túc và cam kết thực hiện lâu dài.
+        </p>
+        <p>
+            Nhân dịp kỷ niệm 10 năm thành lập, ban lãnh đạo công ty đã bày tỏ lòng biết ơn sâu sắc tới toàn thể nhân
+            viên, đối tác và khách hàng đã đồng hành cùng công ty trong suốt thập kỷ vừa qua. "Chúng tôi không thể có
+            được thành công này nếu không có sự ủng hộ và đóng góp từ mọi người. HMP Taxi 24h cam kết sẽ tiếp tục nỗ lực
+            hết mình để mang lại giá trị tốt nhất cho khách hàng và cộng đồng," đại diện công ty chia sẻ.
+        </p>
+        <p>
+            Chặng đường phía trước chắc chắn sẽ còn nhiều thử thách, nhưng với nền tảng vững chắc từ những thành tựu đã
+            đạt được, HMP Taxi 24h tin tưởng rằng công ty sẽ tiếp tục gặt hái nhiều thành công hơn nữa trong tương lai.
+        </p>
+        <p>
+            HMP Taxi 24h đã xây dựng một nền tảng dịch vụ mạnh mẽ, dựa trên sự tận tâm phục vụ và cam kết chất lượng.
+            Công ty luôn xem khách hàng là trung tâm của mọi hoạt động, từ việc lắng nghe nhu cầu cho đến việc thực hiện
+            các chương trình chăm sóc khách hàng đặc biệt. Đội ngũ nhân viên phục vụ tận tình và chuyên nghiệp luôn sẵn
+            sàng đáp ứng mọi yêu cầu của khách hàng, từ những chuyến đi ngắn đến những hành trình dài.
+        </p>
+        <p>
+            Sự phát triển của HMP Taxi 24h không chỉ đến từ việc mở rộng quy mô mà còn nhờ vào việc áp dụng công nghệ
+            hiện đại. Công ty đã đầu tư vào hệ thống đặt xe trực tuyến tiện lợi, giúp khách hàng dễ dàng đặt xe chỉ với
+            vài cú nhấp chuột. Các ứng dụng di động thông minh cho phép khách hàng theo dõi tình trạng chuyến đi của
+            mình, giúp tăng cường tính minh bạch và độ tin cậy trong dịch vụ.
+        </p>
+        <p>
+            Không chỉ dừng lại ở đó, HMP Taxi 24h còn thường xuyên tổ chức các khóa đào tạo nâng cao cho đội ngũ lái xe.
+            Những khóa học này không chỉ giúp lái xe nâng cao tay nghề mà còn trang bị cho họ những kỹ năng giao tiếp và
+            phục vụ khách hàng tốt nhất. Công ty tin rằng một đội ngũ lái xe chuyên nghiệp sẽ tạo ra sự khác biệt lớn
+            trong trải nghiệm của khách hàng.
+        </p>
+        <p>
+            HMP Taxi 24h cũng rất tích cực trong các hoạt động cộng đồng, với nhiều chương trình từ thiện được tổ chức
+            thường xuyên. Công ty đã hỗ trợ cho nhiều trẻ em có hoàn cảnh khó khăn thông qua việc tài trợ học bổng, cung
+            cấp xe miễn phí cho các tổ chức từ thiện, và tham gia các hoạt động bảo vệ môi trường. HMP Taxi 24h tin rằng
+            việc góp phần xây dựng cộng đồng bền vững là trách nhiệm của mỗi doanh nghiệp.
+        </p>
+        <p>
+            Trong năm tới, HMP Taxi 24h có kế hoạch mở rộng thêm nhiều chi nhánh tại các thành phố lớn trên cả nước.
+            Công ty cũng đang xem xét việc mở rộng dịch vụ ra thị trường quốc tế, với mục tiêu cung cấp dịch vụ vận tải
+            hàng đầu không chỉ trong nước mà còn trên toàn khu vực. Để thực hiện được điều này, HMP Taxi 24h sẽ không
+            ngừng đổi mới và nâng cấp công nghệ, đồng thời xây dựng một đội ngũ nhân viên chất lượng cao.
+        </p>
+        <p>
+            HMP Taxi 24h tin tưởng rằng, với những nỗ lực không ngừng nghỉ, công ty sẽ đạt được những thành tựu mới
+            trong những năm tới. Mỗi ngày, công ty đều ghi nhận lại những ý kiến phản hồi từ khách hàng, từ đó điều
+            chỉnh và cải thiện dịch vụ để ngày càng hoàn thiện hơn. "Chúng tôi xem mỗi phản hồi từ khách hàng như một
+            món quà quý giá, giúp chúng tôi cải tiến dịch vụ và phục vụ khách hàng tốt hơn", một đại diện của công ty
+            cho biết.
+        </p>
+        <p>
+            Với phương châm "Khách hàng là thượng đế", HMP Taxi 24h cam kết mang đến sự hài lòng tuyệt đối cho khách
+            hàng trong từng chuyến đi. Công ty luôn nỗ lực hết mình để tạo ra sự khác biệt, không chỉ bằng chất lượng
+            dịch vụ mà còn bởi sự tận tâm, chu đáo của đội ngũ nhân viên. HMP Taxi 24h mong muốn trở thành sự lựa chọn
+            hàng đầu của khách hàng khi cần sử dụng dịch vụ vận tải.
+        </p>
+        <p>
+            Để kết thúc sự kiện kỷ niệm 10 năm thành lập, HMP Taxi 24h đã tổ chức một buổi tiệc trang trọng, với sự tham
+            gia của tất cả nhân viên và khách mời. Trong không khí vui tươi, hạnh phúc, mọi người đã cùng nhau chia sẻ
+            những kỷ niệm đáng nhớ trong hành trình 10 năm qua và cùng nhau hướng tới tương lai tươi sáng hơn. HMP Taxi
+            24h hy vọng sẽ tiếp tục nhận được sự ủng hộ từ quý khách hàng và đối tác, cùng nhau xây dựng một thương hiệu
+            vận tải uy tín và chất lượng tại Việt Nam.
+        </p>
+
+        <h3>Tiêu chí hoạt động của HMP Taxi 24h</h3>
+        <p>
+            HMP Taxi 24h luôn đặt chất lượng dịch vụ lên hàng đầu, với những tiêu chí hoạt động rõ ràng và cụ thể. Công
+            ty cam kết mang đến sự an toàn, tiện lợi và thân thiện cho mọi hành trình của khách hàng. Đội ngũ lái xe
+            được tuyển chọn kỹ lưỡng, đảm bảo có tay nghề cao và thái độ phục vụ tận tình. HMP Taxi 24h cũng đặc biệt
+            chú trọng đến việc bảo trì và bảo dưỡng xe, nhằm đảm bảo mọi phương tiện đều trong tình trạng tốt nhất khi
+            phục vụ khách hàng.
+        </p>
+        <p>
+            Để đáp ứng nhu cầu của khách hàng, HMP Taxi 24h cung cấp nhiều loại hình dịch vụ khác nhau, từ taxi truyền
+            thống đến dịch vụ xe đưa đón sân bay, xe limousine cao cấp. Công ty luôn cập nhật và cải tiến công nghệ, đảm
+            bảo hệ thống đặt xe trực tuyến luôn hoạt động hiệu quả và thuận tiện nhất. Khách hàng có thể dễ dàng theo
+            dõi hành trình của mình qua ứng dụng di động, giúp tăng cường trải nghiệm và độ tin cậy.
+        </p>
+
+        <h3>Kế hoạch tương lai của HMP Taxi 24h</h3>
+        <p>
+            Trong tương lai, HMP Taxi 24h dự kiến sẽ mở rộng hoạt động ra các thành phố lớn khác trên cả nước, đồng thời
+            nâng cấp dịch vụ để đáp ứng nhu cầu ngày càng cao của khách hàng. Công ty cũng sẽ tiếp tục đầu tư vào công
+            nghệ và đội ngũ nhân viên, với mục tiêu tạo ra một môi trường làm việc chuyên nghiệp và thân thiện. HMP Taxi
+            24h hy vọng sẽ trở thành một phần quan trọng trong cuộc sống hàng ngày của người dân Việt Nam, mang lại
+            những chuyến đi an toàn và đáng nhớ.
+        </p>
+    </div>
+
+    <div id="news-article" class="article" style="display: none;">
+        <div class="news-container">
+            <div class="news-article">
+                <h3>HỢP TÁC THƯƠNG QUYỀN CÙNG TAXI24H</h3>
+
+                <p>📣📣📣 HỢP TÁC THƯƠNG QUYỀN CÙNG TAXI24H TẠI HÀ NỘI VÀ BẮC NINH VỚI NHIỀU ƯU ĐÃI!</p>
+                <p>🎁 NHƯỢNG THƯƠNG QUYỀN VỚI GIÁ O ĐỒNG (không mất tiền đầu vào)</p>
+                <p>💰CHỈ 3 TRIỆU /NĂM TIỀN ĐÀM</p>
+                <p>💰 THỊ TRƯỜNG ĐA DẠNG NHIỀU SẢNH</p>
+                <p>🎉 KẾT NỐI TAXI CÔNG NGHỆ (Just Grab, Be...)</p>
+                <p>☎️ HOTLINE 0983622424 - 0983718822</p>
+            </div>
+
+            <div class="news-article">
+                <h3>CƠ HỘI SỞ HỮU</h3>
+                <!-- <img src="https://scontent.fhan8-1.fna.fbcdn.net/v/t1.6435-9/75521702_2144499379179202_7780988956476178432_n.jpg?stp=dst-jpg_p180x540&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=fMbtSBjdK78Q7kNvgGHA2CR&_nc_zt=23&_nc_ht=scontent.fhan8-1.fna&_nc_gid=ASlmxuU1yzRi8b5CnzdCR0o&oh=00_AYC7s9TDwcJjR6Q69_gHMRDS9GCt-jU0JjMt4uOWFOHrNQ&oe=673562C8"
+                    alt="Cơ hội sở hữu" /> -->
+                <p>CƠ HỘI SỞ HỮU 🚕 THẬT QUÁ DỄ DÀNG🆘🆘🆘</p>
+                <p>----------------------------------------------</p>
+                <p>🎯 Chỉ với 100 triệu, bạn đã là chủ nhân của chiếc xe đời mới!</p>
+                <p>☎ Liên hệ Hotline 0983.62.24.24 hoặc 0983.71.88.22 để được tư vấn!</p>
+                <p>-------------------------------------------</p>
+                <p>☑️ BẠN HÃY TỰ MỞ 🔐 CƠ HỘI CHO MÌNH!</p>
+                <p>🍻 CHÚC BẠN THÀNH ĐẠT VÀ MAY MẮN!</p>
+                <p>🎤 Là lá la la️ 🎼️🎶️🎶️🎵️🎶️🎶️🎵️🎶️🎶️🎵️🎼️</p>
+            </div>
+
+            <div class="news-article">
+                <h3>TIN TỨC: Khai báo y tế toàn dân</h3>
+                <p>Từ 10/3, khai báo y tế toàn dân thế nào?</p>
+                <p>Có 3 kênh bạn có thể khai báo gồm:</p>
+                <ol>
+                    <li>Truy cập cổng khai báo: <a href="https://suckhoetoandan.vn/">suckhoetoandan.vn</a> hoặc <a
+                            href="https://tokhaiyte.vn/">tokhaiyte.vn</a> để điền các thông tin.</li>
+                    <li>Tải app NCOVI dành cho tất cả công dân Việt Nam: <a
+                            href="https://apps.apple.com/dk/app/ncovi-mobifone/id1501969272">NCOVI</a>.</li>
+                    <li>Người nhập cảnh vào Việt Nam quét mã QR qua điện thoại thông minh tại các sân bay.</li>
+                </ol>
+                <p>Link bài đầy đủ: <a href="https://vietnamnet.vn/.../khai-bao-y-te-toan-dan-vao-10-3...">Xem thêm</a>
+                </p>
+                <!-- <img src="https://external.fhan8-1.fna.fbcdn.net/emg1/v/t13/6958721871657280651?url=https%3A%2F%2Fvnn-imgs-f.vgcloud.vn%2F2020%2F03%2F09%2F14%2Ftu-10-3-khai-bao-y-te-toan-dan-nhu-the-nao.png&fb_obo=1&utld=vgcloud.vn&stp=c0.5000x0.5000f_dst-jpg_flffffff_p500x261_q75&ccb=13-1&oh=06_Q399n-jM25-kf1UFkjE7yH5Ya2ZyCMPm4-dYGa0jkom-tCQ&oe=670FC5E4&_nc_sid=139b9a"
+                    alt="Khai báo y tế toàn dân"> -->
+            </div>
+
+            <div class="news-article">
+                <h3>TIN TỨC: Cho thuê xe tự lái</h3>
+                <p>Công ty cổ phần thương mại vận tải HMP liên tục cho thuê xe tự lái, giá hấp dẫn, thủ tục nhanh chóng!
+                </p>
+                <p>Ace có nhu cầu liên hệ hotline 0983622424 hoặc tổng đài 1900636624!</p>
+                <!-- <img src="https://scontent.fhan8-1.fna.fbcdn.net/v/t1.6435-9/88424879_2240415489587590_2600257738839687168_n.jpg?stp=dst-jpg_s600x600&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=TNt6aJjT_X4Q7kNvgH17Vyr&_nc_zt=23&_nc_ht=scontent.fhan8-1.fna&_nc_gid=AE5qjZRcx_CCCOZPFCq0Vwv&oh=00_AYDCGx-77ZZJ1KXXQ61jLLx3CEX6z85qH-3Bng-uMT0XAQ&oe=670FD224"
+                    alt="Cho thuê xe tự lái"> -->
+            </div>
+        </div>
+    </div>
+    <div id="offers-article" class="article" style="display: none;">
+        <h2>ƯU ĐÃI KHỦNG NHÂN NGÀY DỊCH VỤ VẬN TẢI</h2>
+        <div class="offers-container">
+            <div class="offer-item">
+                <h3>Giảm giá 30% cho chuyến xe đầu tiên!</h3>
+                <p>Đặt xe ngay hôm nay để nhận ưu đãi đặc biệt này. Áp dụng cho tất cả các chuyến đi trong nội thành.
+                </p>
+                <p>☎️ Hotline: 0983622424</p>
+            </div>
+
+            <div class="offer-item">
+                <h3>Khuyến mãi "Chuyến đi thứ 10 miễn phí"</h3>
+                <p>Khách hàng sẽ nhận chuyến đi miễn phí cho chuyến đi thứ 10 khi đặt xe liên tiếp trong vòng 30 ngày.
+                </p>
+                <p>📅 Thời gian khuyến mãi: Từ ngày 15/10 đến 15/11</p>
+            </div>
+
+            <div class="offer-item">
+                <h3>Combo thuê xe: Giảm 20% cho thuê xe từ 3 ngày trở lên!</h3>
+                <p>Thuê xe từ 3 ngày trở lên sẽ được giảm 20% trên tổng giá thuê. Lên kế hoạch cho chuyến đi của bạn
+                    ngay hôm nay!</p>
+                <p>💼 Cách thức áp dụng: Liên hệ trực tiếp với tổng đài.</p>
+            </div>
+
+            <div class="offer-item">
+                <h3>Quà tặng hấp dẫn cho khách hàng mới!</h3>
+                <p>Khách hàng mới sẽ nhận được một món quà hấp dẫn khi đặt dịch vụ lần đầu tiên.</p>
+                <p>🎁 Đừng bỏ lỡ cơ hội này!</p>
+            </div>
+        </div>
+    </div>
+    <div class="info-company" style="background-color: #d3d3d3; padding: 20px; border-radius: 8px;">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+            alt="Logo" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+        <h4 style="font-size: 18px;">CÔNG TY CỔ PHẦN THƯƠNG MẠI VẬN TẢI HMP TAXI 24H</h4>
+        <p style="font-size: 14px;">Hotline: 024 3323 2323 / 098 3622 424</p>
+        <p style="font-size: 14px;">Email: info@taxi24h.org</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 1: Số 86 ĐÀM QUANG TRUNG, LONG BIÊN, HÀ NỘI</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 2: Số 177 phố Tân Lập, Phường Đình Bảng, Thị xã Từ Sơn, Tỉnh Bắc Ninh,
+            Việt Nam</p>
+        <p style="font-size: 14px;">Mã số doanh nghiệp: 0107018761 do Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp lần đầu
+            ngày 17/10/2015.</p>
+    </div>
+    <!-- Nút Back to Top -->
+    <button id="backToTop"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; background: none; border: none; cursor: pointer;">
+        <i class="fas fa-chevron-up" style="font-size: 30px; color: #4CAF50;"></i>
+    </button>
+    <!-- Nút Hotline -->
+    <a id="hotlineBtn" href="tel:02433232323">
+        <i class="fas fa-phone-alt"></i> 024 3323 2323
+    </a>
+
+    <!-- Nút Facebook -->
+    <a id="facebookBtn" href="https://www.facebook.com/mrChien1984" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <script>
+        window.onscroll = function () {
+            const backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        // Chức năng cho nút "Back to Top"
+        document.getElementById("backToTop").onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+
+
+
+        // Chức năng xử lý thông tin người dùng và bắt đầu chat
+        function submitUserInfo() {
+            const name = document.getElementById("name").value;
+            const age = document.getElementById("age").value;
+            const topic = document.getElementById("topic").value;
+
+            if (name === "" || age === "" || topic === "") {
+                alert("Vui lòng điền đầy đủ thông tin.");
+                return;
+            }
+
+            // Ẩn form và hiển thị nội dung chat
+            document.getElementById("userInfoForm").style.display = "none";
+            document.getElementById("chatContent").style.display = "block";
+            document.getElementById("chatMessage").style.display = "block";
+
+            // Thêm lời chào với thông tin người dùng
+            const chatContent = document.getElementById("chatContent");
+            chatContent.innerHTML += `<p><strong>Bạn:</strong> Tôi là ${name}, ${age} tuổi. Tôi muốn hỏi về vấn đề "${topic}".</p>`;
+        }
+
+        // Khởi tạo ô chat ẩn
+        document.getElementById("chatBox").style.display = "none";
+
+        // Hàm để hiển thị phần nội dung tương ứng với từng mục
+        function showSection(sectionId) {
+            // Lấy tất cả các phần tử có lớp là 'article'
+            const articles = document.querySelectorAll('.article');
+
+            // Ẩn tất cả các phần tử
+            articles.forEach(article => {
+                article.style.display = 'none'; // Ẩn các phần nội dung
+            });
+
+            // Hiển thị phần nội dung tương ứng
+            const selectedArticle = document.getElementById(sectionId);
+            if (selectedArticle) {
+                selectedArticle.style.display = 'block'; // Hiển thị phần nội dung đã chọn
+            }
+        }
+
+        // Gọi hàm showSection để ẩn tất cả các phần khi tải trang
+        document.addEventListener('DOMContentLoaded', () => {
+            showSection('company-article'); // Hiển thị phần Công ty mặc định khi trang được tải
+        });
+        window.onscroll = function () {
+            const backToTopBtn = document.getElementById('backToTop');
+            const facebookBtn = document.getElementById('facebookBtn');
+
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                backToTopBtn.style.display = "block";
+                facebookBtn.style.display = "block"; // Hiển thị nút Facebook
+            } else {
+                backToTopBtn.style.display = "none";
+                facebookBtn.style.display = "none"; // Ẩn nút Facebook
+            }
+        };
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Ngăn chặn menu chuột phải
+        });
+        document.addEventListener('copy', function (e) {
+            e.preventDefault(); // Ngăn chặn việc sao chép
+        });
+
+
+    </script>
+
+</body>
+
+</html>

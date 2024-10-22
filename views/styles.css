@@ -1,0 +1,45 @@
+/* Đặt font chữ chung cho toàn trang */
+body {
+    font-family: 'Arial', sans-serif; /* Sử dụng font Arial */
+    font-size: 18px; /* Tăng cỡ chữ mặc định */
+    background-color: #f4f4f9; /* Màu nền cho toàn trang */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    height: 100vh; /* Chiều cao toàn màn hình */
+}
+
+/* Định dạng cho thanh menu */
+nav {
+    display: flex;
+    justify-content: center; /* Căn giữa các mục menu */
+    align-items: center;
+    background-color: #007bff; /* Màu nền xanh dương */
+    padding: 15px 30px; /* Tăng kích thước padding */
+    border: 3px solid #004aad; /* Khung viền xung quanh */
+    border-radius: 12px; /* Bo góc mềm mại */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Đổ bóng rõ nét hơn */
+    width: 80%; /* Chiều rộng 80% so với chiều ngang trang */
+    max-width: 1200px; /* Giới hạn chiều rộng tối đa */
+}
+
+/* Định dạng cho các mục trong menu */
+nav a {
+    text-decoration: none;
+    color: white; /* Màu chữ trắng */
+    padding: 15px 25px; /* Tăng padding xung quanh chữ */
+    margin: 0 10px; /* Khoảng cách giữa các mục menu */
+    font-size: 20px; /* Kích thước chữ lớn hơn */
+    font-weight: bold; /* Chữ đậm */
+    border: 2px solid transparent; /* Khung viền ẩn */
+    border-radius: 8px; /* Bo góc nhẹ cho mục menu */
+    transition: background-color 0.3s, border-color 0.3s; /* Hiệu ứng chuyển đổi khi hover */
+}
+
+/* Hiệu ứng hover khi di chuột qua các mục menu */
+nav a:hover {
+    background-color: #0056b3; /* Thay đổi màu nền khi hover */
+    border-color: white; /* Hiển thị viền trắng khi hover */
+}

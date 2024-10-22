@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chính - HMP TAXI 24h</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="icon"
+        href="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=A49hS_ntie6nN0QR_itVqhE&oh=00_AYDFMZDnAMMfhIfYsWG_s4Che6tnrIpaow1NI4gGRCs4Bg&oe=671BB3B9"
+        type="image/jpg">
+
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+            user-select: none;
+            /* Vô hiệu hóa chọn văn bản */
+
+            /* Ẩn thanh cuộn ngang */
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            padding: 20px;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+            transition: background-color 0.3s ease;
+        }
+
+        .separator {
+            height: 20px;
+            width: 1px;
+            background-color: #ddd;
+            margin: 0 8px;
+        }
+
+        .hotline {
+            color: #ff5722;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .hotline:hover {
+            text-decoration: underline;
+            transition: text-decoration 0.3s ease;
+        }
+
+        .account-icon {
+            display: flex;
+            align-items: center;
+        }
+
+        .account-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .logo {
+            width: 60px;
+            margin-right: 15px;
+        }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .search-button {
+            padding: 10px 15px;
+            margin-left: 5px;
+            border: none;
+            background-color: #ff5722;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .search-button:hover {
+            background-color: #e64a19;
+        }
+
+
+
+
+
+
+
+        /* Phần tiêu đề với hình nền */
+        .hero-section {
+            position: relative;
+            height: 700px;
+            /* Tăng chiều cao để hiển thị ảnh rõ hơn */
+            background-image: url('https://scontent.fhan14-5.fna.fbcdn.net/v/t39.30808-6/327187016_735536881266566_2988012802569081239_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=cc71e4&_nc_eui2=AeHiKUYlCbfaydqEQHAy9TkHjyuTe3_QKGaPK5N7f9AoZnvdCjWsFDCfPoVjcgPH1fd1wfFe_Er6W9UeH6E9vqU4&_nc_ohc=j5wfrAOqSg8Q7kNvgHvknFw&_nc_zt=23&_nc_ht=scontent.fhan14-5.fna&_nc_gid=Ao3LEt4TcEeYEUaQ5QmLBvH&oh=00_AYDsq-KfVoDKgMsnay_w-4RpSLi4hfMdnsN6U_Bie1eYwQ&oe=671BA09D');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        /* Lớp phủ mờ để dễ đọc chữ */
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Tiêu đề và nội dung nhỏ */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        .hero-content p {
+            font-size: 24px;
+            margin: 10px 0 0;
+            font-style: italic;
+        }
+
+        /* phan giới thiệu */
+        .introduction-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            background-color: #ffffff;
+        }
+
+        .introduction-content {
+            flex: 1;
+            padding-right: 50px;
+            /* Tăng khoảng cách giữa phần chữ và ảnh */
+        }
+
+        .introduction-content h2 {
+            font-size: 36px;
+            /* Tăng kích thước tiêu đề */
+            margin-bottom: 30px;
+            /* Tăng khoảng cách giữa tiêu đề và đoạn văn */
+        }
+
+        .introduction-content p {
+            font-size: 20px;
+            /* Tăng kích thước văn bản */
+            line-height: 1.8;
+            /* Tăng khoảng cách giữa các dòng */
+            color: #555;
+        }
+
+        .introduction-images {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            /* Căn giữa ảnh theo chiều ngang */
+            gap: 20px;
+            /* Tăng khoảng cách giữa các ảnh */
+        }
+
+        .introduction-images img {
+            width: 100%;
+            max-width: 500px;
+            /* Tăng kích thước tối đa của ảnh */
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .detail-button {
+            display: inline-block;
+            padding: 12px 20px;
+            background-color: #ff5722;
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+
+        .detail-button:hover {
+            background-color: #e64a19;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Phần dịch vụ */
+        .services-section {
+            padding: 50px;
+            background-color: #f5f5f5;
+            text-align: center;
+        }
+
+        .services-section h2 {
+            font-size: 40px;
+            margin-bottom: 50px;
+            color: #333;
+        }
+
+        .services-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 30px;
+        }
+
+        .service-item {
+            text-align: left;
+            border: 1px solid #ccc;
+            padding: 20px;
+            background-color: white;
+            border-radius: 5px;
+        }
+
+        .service-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .service-item h3 {
+            font-size: 24px;
+            margin-top: 15px;
+            color: #ff5722;
+        }
+
+        .service-item p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        /* Chỉ bỏ khung cho nút "Xem Chi Tiết" */
+        .details-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: transparent;
+            color: #ff5722;
+            text-decoration: underline;
+            font-weight: bold;
+            border: none;
+            /* Không có khung */
+            cursor: pointer;
+        }
+
+        .details-btn:hover {
+            text-decoration: none;
+        }
+
+        /* Phần đăng ký liên kết lái xe */
+        .driver-link {
+            display: flex;
+            align-items: center;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .driver-link-image {
+            flex: 1;
+            /* Chiều rộng của hình ảnh */
+            background-image: url('https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/460995127_3400732876889173_6978030727899093238_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=86c6b0&_nc_eui2=AeHSQKdH9-5btgL6CXlGPKPyNT-m5Vn2PlQ1P6blWfY-VIa7sohpNmQaFBEhE5ukYzvLkJ0QwZH7madtGMeFtzHe&_nc_ohc=k60c6wg1Xx0Q7kNvgEmHrUs&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AnjXM_km7PXBIp96zeq0fnZ&oh=00_AYBVBhOcnLUuvmQNmwogSO1ga0wyZnoUfo4VxAuBWVXpSQ&oe=671BC3E3');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            height: 300px;
+            /* Chiều cao của hình ảnh */
+            border-radius: 4px;
+            margin-right: 20px;
+            /* Khoảng cách giữa hình ảnh và nội dung */
+        }
+
+        .driver-link-content {
+            flex: 1;
+            /* Chiều rộng của nội dung */
+            max-width: 600px;
+            /* Chiều rộng tối đa của nội dung */
+        }
+
+        .driver-link h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .view-button {
+            padding: 10px 15px;
+            background-color: #ff5722;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+            /* Khoảng cách trên nút */
+        }
+
+        .view-button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Đội ngũ công ty */
+        .back-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #ff5722;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+
+        .back-button:hover {
+            background-color: #e64a19;
+        }
+
+        /* đăng ký liên kết mới */
+        .service-links {
+            margin: 20px 0;
+        }
+
+        .service-items {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .service-item {
+            text-align: center;
+        }
+
+        .service-item img {
+            width: 220px;
+            /* hoặc kích thước khác tùy ý */
+            height: auto;
+        }
+
+        /* CSS cho nút Hotline */
+        #hotlineBtn {
+            position: fixed;
+            bottom: 80px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff5722, #ff8a3d);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #hotlineBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+
+        /* Hiệu ứng ánh sáng phát sáng */
+        #hotlineBtn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            /* Ánh sáng mềm mại */
+            filter: blur(15px);
+            opacity: 0;
+            /* Ẩn ban đầu */
+            transition: opacity 0.3s;
+        }
+
+        #hotlineBtn:hover:before {
+            opacity: 1;
+            /* Hiện lên khi hover */
+        }
+
+        /* CSS cho nút Facebook */
+        #facebookBtn {
+            position: fixed;
+            bottom: 140px;
+            right: 20px;
+            background: #3b5998;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 50px;
+            /* Đổi thành hình oval */
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            /* Thêm hiệu ứng cho filter */
+            font-size: 18px;
+            display: flex;
+            /* Giúp căn giữa icon và text */
+            align-items: center;
+            /* Căn giữa theo chiều dọc */
+            z-index: 1000;
+            /* Đảm bảo nút nổi bật hơn */
+        }
+
+        #facebookBtn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            filter: brightness(1.1);
+            /* Tăng độ sáng khi hover */
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+                /* Giảm khoảng cách */
+            }
+
+            table {
+                font-size: 14px;
+                /* Thay đổi kích thước chữ */
+            }
+
+            /* Ẩn một số cột trên bảng */
+            th:nth-child(n+7),
+            td:nth-child(n+7) {
+                display: none;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            /* Đảm bảo hình ảnh không vượt quá chiều rộng của thiết bị */
+            height: auto;
+            /* Giữ tỷ lệ khung hình */
+        }
+
+        #zaloBtn {
+            position: fixed;
+            bottom: 150px;
+            right: 20px;
+            z-index: 999;
+            /* Đảm bảo nút Zalo nằm trên tất cả các phần tử khác */
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+                    alt="Logo" class="logo">
+            </a>
+
+            <a href="/introduction" class="introduction">Giới thiệu</a>
+            <a href="/buy-car" class="buy-car">Dịch vụ xe</a>
+            <a href="/inform-company.html" class="inform-company">Tin tức</a>
+            <a href="/recruitment" class="recruitment">Đơn Tư Vấn</a> <!-- Liên kết Tuyển dụng -->
+
+            <a href="/dich-vu-khac.html" class="service">Các dịch vụ khác</a>
+
+        </div>
+
+        <!-- <div class="nav-right">
+            <a href="tel:024 3323 2323" class="hotline">Hotline: 024 3323 2323</a>
+        </div> -->
+    </nav>
+
+    <!-- Phần tiêu đề chính với hình nền -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Công ty cổ phần thương mại vận tải HMP TAXI 24h</h1>
+            <p>Taxi 24h sống chọn từng khoảnh khắc</p>
+        </div>
+    </section>
+    <!-- Phần giới thiệu riêng biệt -->
+    <section class="introduction-section">
+        <div class="introduction-content">
+            <h2> Giới Thiệu </h2>
+            <p>HMP Taxi 24h là dịch vụ vận tải hàng đầu tại Việt Nam, cung cấp giải pháp di chuyển an toàn, tiện lợi và
+                chuyên nghiệp.
+                Với đội ngũ tài xế giàu kinh nghiệm và hệ thống xe hiện đại, chúng tôi luôn sẵn sàng phục vụ bạn 24/7,
+                mang lại những trải nghiệm tuyệt vời nhất trên mọi hành trình.
+            </p>
+            <a href="/introduction" class="detail-button">Xem chi tiết</a>
+        </div>
+        <div class="introduction-images">
+            <div class="image-slide">
+                <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/286887203_2826956424266824_3368183233919602605_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGkLwRREH7lx8O9vB6_Wp75pcKWzyA3roylwpbPIDeujPBBH81a6UhHJf1rs_aqwgyl2T7bCqB1lByUgwjWpNIs&_nc_ohc=hdLtkYWfZ0UQ7kNvgF9_GtJ&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AcUyGJGN9DKSHTx_0dKatAq&oh=00_AYDAsk85tFj_5AdWzNJmk9y5GYEwRkSv2F4v-I_-mMBerw&oe=671BA06A"
+                    alt="HMP Taxi Image 1">
+            </div>
+            <div class="image-slide">
+                <img src="https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/286220427_2826956414266825_2901513643048123837_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGEnfxyKfGfbgl7AmZbj5u1kwx9l8AyOOyTDH2XwDI47EeDZKzQ4prpxZvU7CajKQ5cMf8kvpbICXZB_jhcNlgP&_nc_ohc=GaaWVpQC9hUQ7kNvgFqxech&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=AfIi_Lz18cSaN-qehAg58zJ&oh=00_AYCwKstFsb4pSXQpa486Y25SOYkcGdP9rl-G56iM5E-R0Q&oe=671B90BB"
+                    alt="HMP Taxi Image 2">
+            </div>
+            <div class="image-slide">
+                <img src="https://scontent.fhan14-4.fna.fbcdn.net/v/t39.30808-6/433005149_122151284612085756_3644370933671222886_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeFo8HXx__d2rsxTZY8XRX_QxELRfwrQ32PEQtF_CtDfY-9qZm2yZDUgoR395gnjvvyCEokcxoxpxnRZ9iOLnnVg&_nc_ohc=DgrVsE6q6TUQ7kNvgHmMLRM&_nc_zt=23&_nc_ht=scontent.fhan14-4.fna&_nc_gid=Af-_ELgjiFl1JpFUs9MdVvs&oh=00_AYDFPhBA5jlpMv_M8-5RPffwK5zCrd3dHxPxV1Ez_ZB4JQ&oe=671B9E63"
+                    alt="HMP Taxi Image 3">
+            </div>
+        </div>
+    </section>
+    <!-- Phần dịch vụ -->
+    <section class="services-section">
+        <h2>Khám Phá Dịch Vụ</h2>
+        <div class="services-container">
+            <!-- Mua xe -->
+            <div class="service-item">
+                <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/433005149_122151284612085756_3644370933671222886_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_ohc=OYtoVFkAKVIQ7kNvgEUukzX&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=AX4A7oCp5LGNe8vyGptOuQK&oh=00_AYDIxfiVXS3bALnMrywY64MmD_YRzOD8cm0bx5UI707KwQ&oe=6717E223"
+                    alt="Mua xe">
+                <h3>Mua Xe</h3>
+                <p>Trải nghiệm dịch vụ mua xe nhanh chóng, uy tín với đa dạng các dòng xe phù hợp với nhu cầu của bạn.
+                    Chúng tôi luôn cam kết chất lượng và dịch vụ hậu mãi tốt nhất cho khách hàng.</p>
+                <a href="/recruitment" class="details-btn">Xem Chi Tiết</a>
+            </div>
+
+            <!-- Thuê xe -->
+            <div class="service-item">
+                <img src="https://scontent.fhan2-3.fna.fbcdn.net/v/t39.30808-6/433465143_122151284642085756_3391425425812757056_n.jpg?_nc_cat=111&ccb=1-7&_nc_sid=127cfc&_nc_ohc=P_QWZc_KRJUQ7kNvgGbigl-&_nc_zt=23&_nc_ht=scontent.fhan2-3.fna&_nc_gid=AzzagvELwQwDHHSVl1_jbu3&oh=00_AYASEqtviZEi2Vr07ktPheH5VTce2Zg4UtbIkA3cZB_lfA&oe=6717D5A2"
+                    alt="Thuê xe">
+                <h3>Thuê Xe</h3>
+                <p>Cho thuê xe với giá cả hợp lý, thủ tục nhanh chóng. Đội ngũ xe hiện đại và tài xế chuyên nghiệp đảm
+                    bảo cho bạn một hành trình an toàn, tiện lợi và thoải mái.</p>
+                <a href="/recruitment" class="details-btn">Xem Chi Tiết</a>
+            </div>
+
+            <!-- Chạy dịch vụ -->
+            <div class="service-item">
+                <img src="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/461374399_3405262319769562_5072799274808869071_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=86c6b0&_nc_ohc=rXQr5sSOXZIQ7kNvgFfXtBn&_nc_zt=23&_nc_ht=scontent.fhan2-5.fna&_nc_gid=AuIFhMErr93dWdaSptJNgwI&oh=00_AYCGSMJg7MbMGXgSDoVzIRmL_DnLf9SIdJmDxd1m79SPnw&oe=6717FD94"
+                    alt="Chạy dịch vụ">
+                <h3>Chạy Dịch Vụ</h3>
+                <p>Dịch vụ chạy xe chuyên nghiệp 24/7. Chúng tôi mang đến cho khách hàng sự tiện lợi với dịch vụ chạy xe
+                    an toàn, nhanh chóng và chất lượng, phù hợp với mọi nhu cầu di chuyển.</p>
+                <a href="/recruitment" class="details-btn">Xem Chi Tiết</a>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="driver-link">
+            <div class="driver-link-image"></div>
+            <div class="driver-link-content">
+                <h2 id="recruitment-title">Tham Gia Đội Ngũ Của Chúng Tôi</h2>
+                <p id="recruitment-para">Chúng tôi luôn tìm kiếm các tài xế chuyên nghiệp và tận tâm. Nếu bạn muốn tham
+                    gia
+                    cùng chúng tôi, hãy nhấn vào nút bên dưới!</p>
+                <a href="/recruitment.html" class="recruitment">Đơn Tư Vấn</a>
+
+            </div>
+    </section>
+    <section>
+        <div class="service-links">
+            <h2 style="text-align: center;">Tin Tức & Tuyển Dụng</h2>
+            <div class="service-items">
+                <div class="service-item">
+                    <a href="/inform-company.html#news-article"> <!-- Liên kết đến phần Tin tức -->
+                        <img src="https://scontent.fhan15-1.fna.fbcdn.net/v/t39.30808-6/461678828_3407319149563879_3807376905837892142_n.png?_nc_cat=102&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGagbvhoo41tpj0-M0n9jzAB62wUnw-YToHrbBSfD5hOqE35bj5vOK3jcX4RMLo_8HtSyw_WH-9moraJ6DWNW-J&_nc_ohc=uxjE5lPc8E4Q7kNvgGTKMfu&_nc_zt=23&_nc_ht=scontent.fhan15-1.fna&_nc_gid=A6-g-C7h1fZ9pwF6NmrZ59O&oh=00_AYDdqBGpRGgRPmyYZhasa8HxihvINdZBaQjk7w1bW2iZsA&oe=67190E44"
+                            alt="Tin tức" />
+                        <h3>Ra Mắt Dịch Vụ Đặt Xe Qua Ứng Dụng Mới </h3>
+                    </a>
+                    <p>Taxi 24h đã chính thức ra mắt ứng dụng di động mới, giúp khách hàng dễ dàng đặt xe chỉ với vài cú
+                        chạm. Ứng dụng tích hợp nhiều tính năng thông minh như theo dõi tài xế, thanh toán trực tuyến và
+                        đánh giá dịch vụ.
+                    </p>
+                </div>
+                <div class="service-item">
+                    <a href="/inform-company.html#news-article"> <!-- Liên kết đến phần Tuyển dụng -->
+                        <img src="https://png.pngtree.com/element_our/20190530/ourlarge/pngtree-charity-holding-love-illustration-image_1243842.jpg" alt="Tuyển dụng" />
+                        <h3>Khởi Động Dự Án Từ Thiện "Taxi 24h - Hành Trình Yêu Thương"</h3>
+                    </a>
+                    <p>Taxi 24h đã khởi động dự án từ thiện mang tên "Taxi 24h - Hành Trình Yêu Thương", trong đó công
+                        ty sẽ tặng vé taxi miễn phí cho những người có hoàn cảnh khó khăn. Đây là một hoạt động ý nghĩa
+                        nhằm chia sẻ và giúp đỡ cộng đồng.
+                    </p>
+                </div>
+                <div class="service-item">
+                    <a href="/inform-company.html#news-article"> <!-- Liên kết đến phần Thông tin khác -->
+                        <img src="https://scontent.fhan15-2.fna.fbcdn.net/v/t39.30808-6/450657560_879987304163717_1191903895598879953_n.jpg?stp=cp6_dst-jpg&_nc_cat=107&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeGYifDMca5m9uKWAZ9M1v4fjtPW-dS0JQ6O09b51LQlDg-sEVqY3_Owh3yN5-yjAXxXPSSpWyA-OFUquLu3bTPS&_nc_ohc=PtSe5_BixIsQ7kNvgEiwGA_&_nc_zt=23&_nc_ht=scontent.fhan15-2.fna&_nc_gid=AS55DqgqA57TwTqcGkZpuLQ&oh=00_AYAyWsRgTVKHjWeP8JwNbyTRplsVwKn5DhuldJMCyTyaiw&oe=67190391" alt="Thông tin khác" />
+                        <h3>CÔNG TY CHÚNG TÔI SẼ GIÚP BẠN ĐẠT ĐƯỢC GIẤC MƠ SỞ HỮU XE Ô TÔ DỄ DÀNG HƠN BAO GIỜ HẾT!</h3>
+                    </a>
+                    <p>  HỖ TRỢ ĐỐI TƯỢNG MUA XE MỚI:
+                        Chỉ cần trả trước từ 70 triệu đồng, bạn có thể lái chiếc xe mơ ước về nhà ngay hôm nay!
+                        
+                        ⭐️ Hỗ trợ mọi hình thức, kể cả nợ xấu!
+                        
+                        ⭐️ Thủ tục hồ sơ đơn giản, nhanh chóng!
+                        
+                        ☎ Liên hệ ngay với chúng tôi qua Hotline: 0983.62.24.24 - 0986.968.496 để được tư vấn chi tiết và hỗ trợ tốt nhất!
+                        
+                        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="info-company" style="background-color: #d3d3d3; padding: 20px; border-radius: 8px;">
+        <img src="https://scontent.fhan14-3.fna.fbcdn.net/v/t39.30808-6/336439393_752462949791643_8586232493782719439_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeFlP29nci_S2dZMefKA75uEW4S9aW7Wcc1bhL1pbtZxzRgUGZolQawCcT-8nT18jVXCb1Sb_ky7N1aiu7rz1liu&_nc_ohc=2IZQnJ6WZWQQ7kNvgHIBRId&_nc_zt=23&_nc_ht=scontent.fhan14-3.fna&_nc_gid=AIpf5kLeybTgYbpDsMCsY6f&oh=00_AYD6TYNswZwgUpZu8KggOyBkccPG4JzYq25uqjRQ9cRnVw&oe=671BB3B9"
+            alt="Logo" style="width: 80px; height: auto; display: block; margin: 0 auto;">
+        <h4 style="font-size: 18px;">CÔNG TY CỔ PHẦN THƯƠNG MẠI VẬN TẢI HMP TAXI 24H</h4>
+        <p style="font-size: 14px;">Hotline: 024 3323 2323 / 098 3622 424</p>
+        <p style="font-size: 14px;">Email: info@taxi24h.org</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 1: Số 86 ĐÀM QUANG TRUNG, LONG BIÊN, HÀ NỘI</p>
+        <p style="font-size: 14px;">Địa chỉ cơ sở 2: Số 177 phố Tân Lập, Phường Đình Bảng, Thị xã Từ Sơn, Tỉnh Bắc Ninh,
+            Việt Nam</p>
+        <p style="font-size: 14px;">Mã số doanh nghiệp: 0107018761 do Sở Kế hoạch và Đầu tư thành phố Hà Nội cấp lần đầu
+            ngày 17/10/2015.</p>
+    </div>
+    <!-- Nút Back to Top -->
+    <button id="backToTop"
+        style="display: none; position: fixed; bottom: 20px; right: 20px; background: none; border: none; cursor: pointer;">
+        <i class="fas fa-chevron-up" style="font-size: 30px; color: #4CAF50;"></i>
+    </button>
+
+    <!-- Nút Hotline -->
+    <a id="hotlineBtn" href="tel:02433232323">
+        <i class="fas fa-phone-alt"></i> 024 3323 2323
+    </a>
+
+    <!-- Nút Facebook -->
+    <a id="facebookBtn" href="https://www.facebook.com/mrChien1984" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+    </a>
+    <!-- Nút Zalo -->
+    <div style="position: fixed; bottom: 150px; right: 20px; text-align: center;">
+        <button id="zaloBtn" style="background: none; border: none; cursor: pointer;">
+            <i class="fab fa-zalo" style="font-size: 40px; color: #4CAF50;"></i>
+        </button>
+        <div id="zaloQr" style="display: none; margin-top: 5px;">
+            <img src="https://qr-talk.zdn.vn/1/243079198/b3913a5f3e02d75c8e13.jpg" alt="Zalo QR"
+                style="width: 100px; height: 100px; border-radius: 10px;">
+            <div style="font-size: 12px; color: #333;">Liên kết Zalo của chúng tôi</div>
+        </div>
+    </div>
+    <script>
+        // JavaScript cho nút Zalo
+        const zaloBtn = document.getElementById('zaloBtn');
+        const zaloQr = document.getElementById('zaloQr');
+
+        zaloBtn.onclick = function () {
+            if (zaloQr.style.display === 'none') {
+                zaloQr.style.display = 'block';
+            } else {
+                zaloQr.style.display = 'none';
+            }
+        };
+
+        // Chức năng cho nút "Back to Top"
+        window.onscroll = function () {
+            const backToTopButton = document.getElementById("backToTop");
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "block";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+        document.getElementById("backToTop").onclick = function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        /*phần giới thiệu */
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.querySelectorAll('.image-slide img');
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 3000); // Đổi ảnh sau mỗi 3 giây
+        }
+        let userName = ''; // Biến để lưu tên người dùng
+        let socket; // Biến lưu socket WebSocket
+
+        // Hàm xác nhận thông tin người dùng và mở form chat
+        function submitUserInfo() {
+            const name = document.getElementById('name').value;
+            const age = document.getElementById('age').value;
+            const topic = document.getElementById('topic').value;
+
+            if (name && age && topic) {
+                userName = name; // Lưu tên người dùng
+                // Ẩn form thông tin và hiển thị khung chat
+                document.getElementById('userInfoForm').style.display = 'none';
+                document.getElementById('chatContent').style.display = 'block';
+                document.getElementById('chatMessage').style.display = 'block';
+
+                // Gửi lời chào kèm theo thông tin chủ đề
+                const greetingMessage = `Xin chào! Bạn muốn hỏi về "${topic}".`;
+                displayMessage(userName, greetingMessage);
+
+                // Khởi tạo WebSocket
+                initWebSocket();
+            } else {
+                alert('Vui lòng điền đầy đủ thông tin.');
+            }
+        }
+
+        // Hàm khởi tạo WebSocket
+        function initWebSocket() {
+            socket = new WebSocket('ws://your-websocket-server-url'); // Thay đổi URL thành địa chỉ máy chủ WebSocket của bạn
+
+            socket.onopen = function () {
+                console.log('WebSocket kết nối thành công!');
+            };
+
+            socket.onmessage = function (event) {
+                // Nhận và hiển thị tin nhắn từ máy chủ
+                const data = JSON.parse(event.data);
+                displayMessage(data.user, data.message);
+            };
+
+            socket.onclose = function () {
+                console.log('WebSocket đã đóng kết nối.');
+            };
+
+            socket.onerror = function (error) {
+                console.error('WebSocket lỗi:', error);
+            };
+        }
+
+        // Hàm hiển thị tin nhắn trong khung chat
+        function displayMessage(user, message) {
+            document.getElementById('chatContent').innerHTML += `<div class="message"><strong>${user}</strong>: ${message}</div>`;
+            const chatContent = document.getElementById('chatContent');
+            chatContent.scrollTop = chatContent.scrollHeight; // Cuộn đến tin nhắn mới nhất
+        }
+
+        // Hàm gửi tin nhắn
+        function sendMessage(event) {
+            if (event.key === 'Enter') {
+                const messageInput = document.getElementById('chatMessage');
+                const message = messageInput.value.trim();
+
+                if (message !== '') {
+                    // Gửi tin nhắn qua WebSocket
+                    const chatMessage = { user: userName, message: message };
+                    socket.send(JSON.stringify(chatMessage));
+                    displayMessage(userName, message); // Hiển thị tin nhắn của người dùng
+                    messageInput.value = ''; // Xóa ô nhập tin nhắn
+                }
+            }
+        }
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault(); // Ngăn chặn menu chuột phải
+        });
+
+    </script>
+</body>
+
+</html>

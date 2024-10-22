@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông Báo Đăng Ký</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            display: none;
+        }
+        .container.active {
+            display: block;
+        }
+        .container h1 {
+            margin-bottom: 15px;
+        }
+        .container p {
+            font-size: 18px;
+            color: #333;
+            margin: 10px 0;
+        }
+        .container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .container a:hover {
+            background-color: #45a049;
+        }
+        .icon {
+            font-size: 50px;
+        }
+        .success .icon {
+            color: #4CAF50;
+        }
+        .error .icon {
+            color: #ff0000;
+        }
+        .error h1 {
+            color: #ff0000;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Thông báo đăng ký thành công -->
+    <div id="success" class="container success">
+        <div class="icon">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h1>Đăng Ký Thành Công!</h1>
+        <p>Email xác nhận đã được gửi đến địa chỉ của bạn.</p>
+        <p>Cảm ơn bạn đã tham gia cộng đồng của chúng tôi!</p>
+        <a href="/login">Quay về trang đăng nhập</a>
+    </div>
+
+    <!-- Thông báo email đã tồn tại -->
+    <div id="error" class="container error">
+        <div class="icon">
+            <i class="fas fa-exclamation-circle"></i>
+        </div>
+        <h1>Thông Báo!</h1>
+        <p>Email đã tồn tại. Vui lòng chọn email khác.</p>
+        <a href="/register">Quay về trang đăng ký</a>
+    </div>
+
+    <script>
+        // Lấy giá trị từ URL hoặc server để xác định trạng thái
+        // Ví dụ: bạn có thể lấy tham số từ URL (email_exist = true) nếu có email trùng
+        const params = new URLSearchParams(window.location.search);
+        const isEmailExist = params.get('email_exist');
+
+        // Hiển thị thông báo phù hợp
+        if (isEmailExist === 'true') {
+            document.getElementById('error').classList.add('active');
+        } else {
+            document.getElementById('success').classList.add('active');
+        }
+    </script>
+
+</body>
+</html>

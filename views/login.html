@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7; /* Nền màu xám nhẹ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px; /* Chiều rộng tối đa */
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            text-align: left;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border 0.3s ease;
+        }
+        input:focus {
+            border-color: #4facfe;
+            outline: none;
+        }
+        .remember-forgot {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+            width: 100%;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+        .remember-me label {
+            margin: 0;
+            white-space: nowrap; /* Ngăn không cho văn bản xuống dòng */
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #4facfe;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #00f2fe;
+        }
+        .error-message {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .success-message {
+            color: green;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .fAPcKa {
+            font-family: Roboto;
+            font-size: 14px;
+            line-height: 20px;
+            font-weight: 400;
+            color: rgb(44, 44, 44);
+        }
+        .forgot-password-form {
+            display: none; /* Ẩn mặc định */
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Đăng Nhập</h1>
+        <form method="POST" action="/login" id="login-form">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Nhập email của bạn">
+        
+            <label for="password">Mật khẩu:</label>
+            <input type="password" id="password" name="password" required placeholder="Nhập mật khẩu của bạn">
+
+            <div class="remember-forgot">
+                <div class="remember-me">
+                    <input type="checkbox" id="remember-me">
+                    <label for="remember-me" class="fAPcKa">Ghi nhớ tài khoản</label>
+                </div>
+                <a href="#" id="forgot-password-link" style="text-decoration: none; color: #4facfe; margin-left: 10px;">Quên mật khẩu?</a>
+            </div>
+
+            <button type="submit">Đăng nhập</button>
+            <div class="error-message" id="error-message" style="display:none;"></div>
+        </form>
+
+        <div class="forgot-password-form" id="forgot-password-form">
+            <h3>Nhập email để đặt lại mật khẩu</h3>
+            <form method="POST" action="/reset-password" id="reset-password-form">
+                <input type="email" id="reset-email" name="email" required placeholder="Nhập email của bạn">
+                <button type="submit">Gửi yêu cầu đặt lại mật khẩu</button>
+                <div class="success-message" id="success-message" style="display:none;"></div>
+                <div class="error-message" id="reset-error-message" style="display:none;"></div>
+            </form>
+        </div>
+
+        <!-- Thêm liên kết đến trang đăng ký và quay lại trang chủ -->
+        <div style="margin-top: 20px;">
+            <p>Bạn chưa có tài khoản? <a href="/register" style="color: #4facfe; text-decoration: none;">Đăng ký ngay</a></p>
+            <p><a href="/" style="color: #4facfe; text-decoration: none;">Quay lại trang chủ</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Khi trang được tải, kiểm tra xem có thông tin tài khoản đã lưu hay không
+        window.onload = function() {
+            const storedEmail = localStorage.getItem('email');
+            const storedPassword = localStorage.getItem('password');
+            const rememberMe = document.getElementById('remember-me');
+
+            if (storedEmail) {
+                document.getElementById('email').value = storedEmail;
+                document.getElementById('password').value = storedPassword;
+                rememberMe.checked = true; // Đánh dấu checkbox "Ghi nhớ tài khoản"
+            }
+        };
+
+        document.getElementById('login-form').onsubmit = async function(e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định của form
+
+            // Lấy dữ liệu từ form
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value; // Lưu các giá trị vào một đối tượng
+            });
+
+            try {
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    headers: {
+                        'Content-Type': 'application/json', // Đặt loại nội dung là JSON
+                    },
+                    body: JSON.stringify(data), // Chuyển đổi dữ liệu thành JSON
+                });
+
+                if (response.ok) {
+                    // Nếu đăng nhập thành công, lưu thông tin tài khoản nếu checkbox được chọn
+                    if (document.getElementById('remember-me').checked) {
+                        localStorage.setItem('email', data.email);
+                        localStorage.setItem('password', data.password);
+                    } else {
+                        localStorage.removeItem('email');
+                        localStorage.removeItem('password');
+                    }
+                    // Chuyển hướng về trang chủ
+                    window.location.href = '/';
+                } else {
+                    // Hiển thị thông báo lỗi nếu đăng nhập không thành công
+                    const errorMessage = await response.text(); // Lấy thông báo lỗi từ phản hồi
+                    document.getElementById('error-message').innerText = errorMessage || 'Đăng nhập không thành công, vui lòng thử lại.';
+                    document.getElementById('error-message').style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Đã xảy ra lỗi:', error);
+                document.getElementById('error-message').innerText = 'Đã xảy ra lỗi. Vui lòng thử lại.';
+                document.getElementById('error-message').style.display = 'block';
+            }
+        };
+
+        // Hiện/Ẩn form quên mật khẩu
+        document.getElementById('forgot-password-link').onclick = function(e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định của liên kết
+            const forgotPasswordForm = document.getElementById('forgot-password-form');
+            forgotPasswordForm.style.display = forgotPasswordForm.style.display === 'none' ? 'block' : 'none';
+        };
+
+        // Xử lý gửi yêu cầu đặt lại mật khẩu
+        document.getElementById('reset-password-form').onsubmit = async function(e) {
+            e.preventDefault(); // Ngăn chặn hành động mặc định của form
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value; // Lưu các giá trị vào một đối tượng
+            });
+
+            try {
+                const response = await fetch(this.action, {
+                    method: this.method,
+                    headers: {
+                        'Content-Type': 'application/json', // Đặt loại nội dung là JSON
+                    },
+                    body: JSON.stringify(data), // Chuyển đổi dữ liệu thành JSON
+                });
+
+                if (response.ok) {
+                    // Hiển thị thông báo thành công
+                    document.getElementById('success-message').innerText = 'Yêu cầu đặt lại mật khẩu đã được gửi thành công!';
+                    document.getElementById('success-message').style.display = 'block';
+                    document.getElementById('reset-error-message').style.display = 'none';
+                    document.getElementById('reset-password-form').reset(); // Reset form
+                } else {
+                    // Hiển thị thông báo lỗi
+                    const errorMessage = await response.text(); // Lấy thông báo lỗi từ phản hồi
+                    document.getElementById('reset-error-message').innerText = errorMessage || 'Đã xảy ra lỗi, vui lòng thử lại.';
+                    document.getElementById('reset-error-message').style.display = 'block';
+                    document.getElementById('success-message').style.display = 'none';
+                }
+            } catch (error) {
+                console.error('Đã xảy ra lỗi:', error);
+                document.getElementById('reset-error-message').innerText = 'Đã xảy ra lỗi. Vui lòng thử lại.';
+                document.getElementById('reset-error-message').style.display = 'block';
+                document.getElementById('success-message').style.display = 'none';
+            }
+        };
+    </script>
+</body>
+</html>

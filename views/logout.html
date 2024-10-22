@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Tài khoản của tôi</title>
+</head>
+<body>
+    <h1>Tài khoản của tôi</h1>
+    <p>Họ và tên: <%= user.fullName %></p>
+    <p>Email: <%= user.email %></p>
+    <p>Số điện thoại: <%= user.phoneNumber %></p>
+    
+    <!-- Form để đăng xuất -->
+    <form action="/logout" method="POST">
+        <button type="submit">Đăng xuất</button>
+    </form>
+
+    <a href="/">Về trang chính</a>
+</body>
+</html>
